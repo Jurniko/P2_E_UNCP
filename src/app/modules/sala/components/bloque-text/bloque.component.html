@@ -1,0 +1,36 @@
+<app-resultado></app-resultado>
+<div class="w-full h-screen px-16">
+
+  <div class="flex-col justify-center items-center h-full w-full text-center ">
+    <h1 class="text-3xl font-extrabold my-8"> Preguntas </h1>
+    <div>
+      <div class="font-light text-2xl w-8/12 m-auto whitespace-pre-wrap">
+      ¿Qué entiendes por la frase " Goldmundo, ilusorio se quemo los paradeos de tanta inmundicia?
+      </div>
+      <div class="w-5/12 m-auto ">
+        <label for="inputChat" class="tracking-wider font-semibold text-lg my-2 text-start"> Preciosa el botón de microfono y habla.</label> <br>
+        <div class="flex justify-center items-center">
+          <textarea name="" id="inputChat" class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 " cols="5" rows="1"></textarea>
+
+          <button class="items-center flex justify-center items-center py-2 px-2 ">
+            <img src="assets/sala/no-listening.svg" class="w-8" (click)="isListening = true"  *ngIf="!isListening">
+            <img src="assets/sala/listening.svg" class="w-8" *ngIf="isListening" (click)="isListening = false">
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <m-button> Siguiente </m-button>
+  </div>
+
+   <div class="flex-col justify-center items-center h-full w-full text-center">
+    <h1 class="text-3xl font-extrabold my-8"> BLOQUE 1 : Lectura Inmersiva </h1>
+    <div class="font-light text-xl w-8/12 m-auto whitespace-pre-wrap text-justify">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quae saepe exercitationem illum quisquam libero minus assumenda aliquid soluta repudiandae hic officia quod animi ad earum non, nam itaque quis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum natus iste porro saepe nam, officia nobis. Omnis corporis itaque ad. Vero libero mollitia nihil sed distinctio deserunt quia? Perferendis, amet.
+
+       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, temporibus? Magni sit dolorem non pariatur dicta at ad, sequi porro itaque perferendis illum ratione sunt eaque necessitatibus libero in similique.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam hic provident id dolore consequatur doloribus molestias aliquam exercitationem architecto nulla? Consequatur dolore reprehenderit praesentium architecto porro natus, ducimus omnis. Quos.
+    </div>
+    <m-button> Siguiente </m-button>
+  </div>
+</div>

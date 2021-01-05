@@ -1,0 +1,25 @@
+<div class="w-full h-screen px-16">
+  <div class="flex justify-center items-center h-full">
+
+    <div class="w-1/2 m-auto ">
+      <img src="assets/sala/form-user.svg" class="w-84" alt="Espera">
+    </div>
+    <div class="w-1/2 m-auto text-right" *ngIf="!next">
+      <h1 class="text-6xl font-extrabold">Antes de comenzar rellene el siguiente formulario.</h1>
+      <m-button type="normal" (click)="next = true"> Siguiente </m-button>
+    </div>
+
+    <div class="w-1/2 m-auto text-right" *ngIf="next">
+      <form class="w-7/12 m-auto">
+        <m-f-input label="Código de Matricula"> </m-f-input>
+        <m-f-input label="Pseudónimo"> </m-f-input>
+        <m-f-input label="Facultad"> </m-f-input>
+        <m-f-input label="Semestre"> </m-f-input>
+        <m-button type="normal"> Ingresar </m-button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
