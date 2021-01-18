@@ -1,53 +1,39 @@
-<div class="w-full h-screen px-16">
+<div class="w-full h-screen ">
+  <div [class]="'flex-col justify-center items-center h-full w-full text-center '+randomBgProblem " *ngIf="vid">
+    <div class="bg-white shadow-2xl h-full w-9/12 m-auto px-16">
+      <m-h type="p-1"> BLOQUE VIDEO</m-h>
+      <app-vid [videoId]="problem.body!" (finishVid)="finishedVid = true"></app-vid>
+      <p class="font-semibold text-red-400 ">Nota: <span class="font-normal text-red-400"> Para poder seguir con las preguntas,
+         es necesario terminar de ver el video. <br> Caso contrario no se habilitará el boton Siguiente. </span>  </p>
+      <br>
+      <m-button (click)="vid = false; questions = true" [disabled]="!finishedVid"> Siguiente </m-button>
+    </div>
 
-  <div class="flex-col justify-center items-center h-full w-full text-center ">
-    <h1 class="text-3xl font-extrabold my-8"> Preguntas </h1>
-    <div>
-      <div class="font-light text-2xl w-8/12 m-auto whitespace-pre-wrap my-4">
-        ¿Qué entiendes por la frase " Goldmundo, ilusorio se quemo los paradeos de tanta inmundicia?
-      </div>
-      <form class="w-7/12 m-auto flex-col text-left">
-          <label class=" items-center">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
-            <span class="ml-2">Personal</span>
-            <br>
-          </label>
-          <label class=" items-center">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
-            <span class="ml-2">Personal</span>
-            <br>
-          </label>
-          <label class=" items-center">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
-            <span class="ml-2">Personal</span>
-            <br>
-          </label>
-          <label class=" items-center">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
-            <span class="ml-2">Personal</span>
-            <br>
-          </label>
-          <label class=" items-center">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
-            <span class="ml-2">Personal</span>
-            <br>
-          </label>
-        <button class="items-center flex justify-center items-center py-2 px-2"></button>
+  </div>
+
+
+  <div class="flex-col justify-center items-center h-full w-full text-center " *ngIf="questions">
+
+    <div class="static w-full top-0 bg-no-repeat z-0 bg-cover "
+    [style]="randomBgQuestion">
+    <div class="bg-white w-7/12 m-auto shadow-2xl ">
+      <m-h type="p-1">CUESTIONARIO</m-h>
+      <form *ngIf="problem.questions" (ngSubmit)="onSubmit()" [formGroup]="form" >
+
+        <questions-lvl *ngFor="let question of problem.questions ;let iQuestion = index " [text]="question.question!">
+          <m-f-radio [nameGroupInput]="question.id" *ngFor="let a of question.alternatives!"
+          [label]="a.alternative!" [formGroup]="form!" [controlName]="'question'+ (iQuestion+1)!.toString()" [value]="a.id" > <!-- IndexQuestion -> no problem with formGroup -->
+          </m-f-radio>
+        </questions-lvl>
+
+        <m-button [submit]="true" [disabled]="form.invalid"> Siguiente </m-button>
 
       </form>
     </div>
 
-    <m-button> Siguiente </m-button>
+      </div>
+
   </div>
 
-  <div class="flex-col justify-center items-center h-full w-full text-center">
-    <h1 class="text-3xl font-extrabold my-8"> BLOQUE 1 : Lectura Inmersiva </h1>
-    <div class="font-light text-xl flex justify-center whitespace-pre-wrap h-80">
-      <youtube-player videoId="2CJMyFSy6L0" suggestedQuality="highres" [width]="500" [height]="300"[startSeconds]="4"
-        [endSeconds]="100">
-      </youtube-player>
-    </div>
 
-    <m-button> Siguiente </m-button>
-  </div>
 </div>

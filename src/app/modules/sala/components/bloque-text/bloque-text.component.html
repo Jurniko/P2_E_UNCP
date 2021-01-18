@@ -1,0 +1,41 @@
+<app-resultado *ngIf="openResult" (next)=" openResult = false ; textFinished = true ; questions = true"
+  [ppmValue]="ppmValue$"></app-resultado>
+<div class="w-full h-screen ">
+
+  <div [class]="'flex-col justify-center items-center h-full w-full text-center '+randomBgProblem" *ngIf="!textFinished">
+    <div class="bg-white shadow-2xl h-full w-9/12 m-auto px-16 ">
+        <!-- textFinished -->
+        <m-h type="p-1">TEXTO</m-h>
+        <app-text (sucessfulRead)="succesfulRead($event)" (ppm)="ppmValue$ = $event" [text]="problem?.body!"
+          *ngIf="problem"></app-text> <!-- *ngIf para que los valores ingresen una vez recogidas -->
+        <m-button (click)="openResult = true " [disabled]="!succesfulRead$"> Siguiente </m-button>
+    </div>
+
+
+  </div>
+
+  <div class="flex-col justify-center items-center h-full w-full text-center" *ngIf="questions">
+    <!-- questions -->
+    <div class="static w-full top-0 bg-no-repeat z-0 bg-cover"
+      [style]="randomBgQuestion"> <!-- LEFT SVG -->
+
+        <div class="bg-white w-7/12 m-auto shadow-2xl ">
+          <m-h type="p-1">CUESTIONARIO</m-h>
+          <form *ngIf="problem.questions" (ngSubmit)="onSubmit()" [formGroup]="form">
+
+            <questions-lvl *ngFor="let question of problem.questions ;let iQuestion = index " [text]="question.question!">
+              <m-f-radio [nameGroupInput]="question.id" *ngFor="let a of question.alternatives!;let i = index"
+                [label]="a.alternative!" [formGroup]="form!" [controlName]="'question'+ (iQuestion+1)!.toString()"
+                [value]="a.id"></m-f-radio>
+            </questions-lvl>
+
+            <m-button [submit]="true" [disabled]="form.invalid"> Siguiente </m-button>
+
+          </form>
+        </div>
+      </div>
+
+  </div>
+
+
+</div>

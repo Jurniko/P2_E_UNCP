@@ -1,0 +1,40 @@
+<div class="w-full h-screen">
+  <div class="bg-purple-50 h-16 px-8 flex justify-between items-center">
+    <div>
+      <p class="font-semibold ">Código de Matricula : <span class="font-normal"> {{result.student.enrollment_code}} </span></p>
+      <p class="font-semibold ">Pseudónimo : <span class="font-normal"> {{result.student.nickname}} </span></p>
+    </div>
+  </div>
+
+  <div class=" px-32">
+    <div class="my-4">
+      <m-level [lvl]="1" rol="admin" (hidden)="hiddenLevel1=$event"></m-level>
+      <br>
+      <div class="flex flex-wrap" >
+        <div class="w-80" *ngFor="let nivel1 of result.level_1_keys" [hidden]="hiddenLevel1" >
+          <card [codeGroupBlock]="nivel1" [data]="result?.level_1!"></card>
+        </div>
+      </div>
+    </div>
+    <div class="my-4">
+      <m-level [lvl]="2" rol="admin" (hidden)="hiddenLevel2=$event"></m-level>
+      <br>
+      <div class="flex flex-wrap">
+        <div class="w-80" *ngFor="let nivel2 of result.level_2_keys" [hidden]="hiddenLevel2">
+          <card [codeGroupBlock]="nivel2" [data]="result?.level_2!"></card>
+        </div>
+      </div>
+    </div>
+    <div class="my-4" >
+      <m-level [lvl]="3" rol="admin" (hidden)="hiddenLevel3=$event"></m-level>
+      <br>
+      <div class="flex flex-wrap">
+        <div class="w-80" *ngFor="let nivel3 of result.level_3_keys" [hidden]="hiddenLevel3">
+          <card [codeGroupBlock]="nivel3" [data]="result?.level_3!"></card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

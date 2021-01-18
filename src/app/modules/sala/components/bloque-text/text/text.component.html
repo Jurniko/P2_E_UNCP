@@ -1,0 +1,13 @@
+  <div class="overflow-auto h-96 w-full border-2 border-black shadow m-auto py-8 ">
+    <pre class="font-light text-xl whitespace-pre-wrap text-justify px-8 font-sans" [innerHTML]="textInner">
+    </pre>
+
+  </div>
+
+  <div class="flex justify-center">
+    <button class="items-center flex justify-center items-center py-2 px-2 ">
+      <img src="assets/sala/no-listening.svg" class="w-8" (click)="isListening = true ; startSpeech()"  *ngIf="!isListening">
+      <img src="assets/sala/listening.svg" class="w-8" *ngIf="isListening" (click)="isListening = false ; stopSpeech()">
+    </button>
+    <span class="text-md font-light italic mx-1 self-center" *ngIf="isListening"> escuchando... </span>
+  </div>

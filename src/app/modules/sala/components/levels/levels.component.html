@@ -1,19 +1,33 @@
-<div class="w-full h-screen px-16">
-  <div class="flex justify-center items-center h-full">
-    <div class="w-1/2 m-auto">
-      <button class="rounded bg-green-400 hover:bg-green-300 py-4 px-8 text-white text-xl font-normal flex justify-between items-center w-full shadow-xl my-4" >
-        Nivel 1  : Pruebas básicas
-        <img src="assets/sala/unlocked.svg" alt="Icono-desbloqueado">
-      </button>
-      <button class="rounded bg-green-500 py-4 px-8 text-white text-xl font-normal flex justify-between items-center w-full shadow-xl my-4" >
-        Nivel 2  : Pruebas Intermedias
-        <img src="assets/sala/locked.svg" alt="Icono-desbloqueado">
-      </button>
-      <button class="rounded bg-green-500 py-4 px-8 text-white text-xl font-normal flex justify-between items-center w-full shadow-xl my-4" >
-        Nivel 3  : Pruebas Avanzadas
-        <img src="assets/sala/locked.svg" alt="Icono-desbloqueado">
-      </button>
+<m-navbar-lvl [lvl]="0" [enrollment_code]="studentData.enrollment_code!"></m-navbar-lvl>
+<div style="background-image: url('assets/shared/landscape-lvl.svg')"
+  class="static w-full h-ull top-0 bg-no-repeat z-0 bg-left-bottom bg-cover">
+  <div class="w-full h-screen">
+    <div class="flex justify-center items-center h-full">
+      <div class="w-1/2 m-auto">
+        <button
+          [class]="maxLevel>=0? styleEnabled.css : styleDisabled.css "
+          [disabled]="maxLevel>=0? false:true"
+          (click)="goLevel(1)">
+          Nivel 1 : Pruebas básicas
+          <img [src]="maxLevel>=0? styleEnabled.svg : styleDisabled.svg"/>
+        </button>
+
+        <button
+          [class]="maxLevel>=1? styleEnabled.css : styleDisabled.css "
+          [disabled]="maxLevel>=1? false:true"
+          (click)="goLevel(2)">
+          Nivel 2 : Pruebas Intermedias
+          <img [src]="maxLevel>=1? styleEnabled.svg : styleDisabled.svg"/>
+        </button>
+
+        <button
+        [class]="maxLevel>=2? styleEnabled.css : styleDisabled.css "
+        [disabled]="maxLevel>=2? false:true"
+        (click)="goLevel(3)">
+          Nivel 3 : Pruebas Avanzadas
+          <img [src]="maxLevel>=2? styleEnabled.svg : styleDisabled.svg"/>
+        </button>
+      </div>
     </div>
   </div>
-
 </div>

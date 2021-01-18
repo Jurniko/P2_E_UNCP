@@ -1,0 +1,33 @@
+<div class="w-full h-screen px-16">
+  <m-h type="p-1">EDITAR SALA</m-h>
+  <div class="w-6/12 mx-auto">
+    <h2 class="font-semibold text-2xl"> Url de Sala <span class="text-red-500 italic text-base"> ## No puedes modificar</span> </h2>
+    <div class="flex">
+      <input type="text" [value]="url" class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 mr-4 bg-green-500 bg-opacity-25" #input readonly>
+      <m-button (click)="copyCode(input)">Copiar</m-button>
+    </div>
+
+    <form class="my-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <m-f-input
+        label="Descripción"
+        [formGroup]="form"
+        controlName="description"
+        placeHolder="Ing. Sistemas - Semestre V - Salón 15"
+      >
+      </m-f-input>
+
+      <span class="italic text-md font-normal text-red-500 ">Nota: Escribir los códigos de Matricula separados por coma <br></span>
+
+      <m-f-textarea
+        label="Códigos de Matricula Permitidos para esta sala"
+        [formGroup]="form"
+        controlName="enrollment_codes"
+        placeHolder="2018100565K,2017100151M,2018100222N,..."
+      ></m-f-textarea>
+      <div class="flex justify-between">
+        <m-button type="back" (click)="exitPage()">Atrás</m-button>
+        <m-button [submit]="true" >Editar Sala</m-button>
+      </div>
+    </form>
+  </div>
+</div>

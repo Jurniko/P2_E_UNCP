@@ -1,0 +1,22 @@
+<div
+  class="w-full h-16 bg-green-400 bg-gradient-to-r from-green-400 to-blue-500 flex justify-between items-center px-16 static">
+  <div>
+    <button class="font-bold text-white py-4 px-2" (click)="logoutStudent()">
+      Salir de Cuenta
+    </button>
+    |
+    <button class="font-bold text-white py-4 px-2" (click)="home()">
+      Mis niveles
+    </button>
+  </div>
+
+
+  <div class="font-semibold text-white flex items-center ">
+    <p class="mx-4">
+      {{enrollment_code}}
+    </p>
+
+    <m-level color="white" [lvl]="lvl"></m-level>
+  </div>
+
+</div>

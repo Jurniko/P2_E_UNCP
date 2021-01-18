@@ -1,0 +1,6 @@
+<label class="tracking-wider font-semibold text-lg my-2"> {{label}}:
+  <select class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2" [formControl]="this.formControl"  >
+    <option [value]="a.id" *ngFor="let a of dataSelect"> {{ a[a.name] }} </option> <!--    [2001,2002,2003]-->
+  </select>
+  <br>
+</label>

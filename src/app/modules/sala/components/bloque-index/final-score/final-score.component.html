@@ -1,0 +1,31 @@
+<div class="w-screen h-screen bg-gray-800 top-0 fixed m-auto">
+  <div class="w-9/12 h-screen m-auto z-25 m-auto">
+    <div class="m-auto text-center">
+      <m-h type="p-1" color="white"> RESULTADO - PUNTUACIÓN FINAL </m-h>
+    </div>
+
+    <div class="flex flex-wrap justify-center items-center">
+      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8 ">
+        <p class="font-bold text-4xl text-center py-4">BLOQUE 1</p>
+        <div class="text-center text-3xl font-semibold my-2">
+          Nota : <span class="font-medium text-2xl"> {{block_1}} </span>
+        </div>
+      </div>
+      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8 ">
+        <p class="font-bold text-4xl text-center py-4">BLOQUE 2</p>
+        <div class="text-center text-3xl font-semibold my-2">
+          Nota : <span class="font-medium text-2xl"> {{block_2}} </span>
+        </div>
+      </div>
+      <div class="rounded-lg shadow-xl bg-white h-auto w-full m-auto my-8 ">
+        <p class="font-bold text-4xl text-center py-4">PROMEDIO</p>
+        <div class="text-center text-3xl font-semibold my-2">
+          Nota : <span class="font-medium text-2xl"> {{average}} </span>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <m-button (click)="finished.emit(true)"> Terminar </m-button>
+    </div>
+  </div>
+</div>

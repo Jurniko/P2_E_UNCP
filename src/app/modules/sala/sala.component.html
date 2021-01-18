@@ -1,11 +1,34 @@
 <div class="w-full h-screen px-16">
   <div class="flex justify-center items-center h-full">
-    <div class="w-1/2 m-auto">
-      <h1 class="text-6xl font-extrabold">Bienvenido <br> Ingresa el código de  la sala</h1>
-      <div class="w-6/12">
-        <m-f-input label="Código"> </m-f-input>
-        <m-button type="normal"> Siguiente </m-button>
-      </div>
+
+    <div class="w-1/2 m-auto" *ngIf="!hasAccount">
+      <h1 class="text-6xl font-extrabold">Bienvenido, <br> Ingresa el código de  la sala</h1>
+      <form class="w-6/12" [formGroup]="form" (ngSubmit)="onSubmit('room')">
+        <m-f-input label="Código" [formGroup]="form" controlName="code" [maxLength]="5"> </m-f-input>
+        <span class="text-red-500 font-normal tracking-wider text-lg "  *ngIf="!existCode"> No existe una sala con el código ingresado. Intente de nuevo. </span>
+        <div class="w-full flex justify-between">
+          <m-button type="back" (click)="exit()"> Atrás </m-button>
+          <m-button type="normal" [submit]="true" [disabled]="form.invalid"> Siguiente </m-button>
+        </div>
+
+        <br>
+        <span class="underline text-blue-600 cursor-pointer hover:text-blue-900" (click)="changeStatus(true)">Ya he ingresado ántes</span>
+      </form>
+
+    </div>
+    <div class="w-1/2 m-auto" *ngIf="hasAccount">
+      <h1 class="text-6xl font-extrabold">Bienvenido <br> nuevamente</h1>
+      <form class="w-6/12" [formGroup]="form" (ngSubmit)="onSubmit('account')">
+        <m-f-input label="Codigo de Matricula" [formGroup]="form" controlName="enrollment_code"> </m-f-input>
+        <m-f-input label="Pseudónimo" [formGroup]="form" controlName="nickname"> </m-f-input>
+        <span class="text-red-500 font-normal tracking-wider text-lg "  *ngIf="!existStudent"> Credenciales incorrectas. Intente de nuevo. </span>
+        <div class="w-full flex justify-between">
+          <m-button type="back" (click)="exit()"> Atrás </m-button>
+          <m-button type="normal" [submit]="true" [disabled]="form.invalid"> Siguiente </m-button>
+        </div>
+        <br>
+        <span class="underline text-blue-600 cursor-pointer hover:text-blue-900" (click)="changeStatus(false)">Ingresar código de una sala</span>
+      </form>
 
     </div>
     <div class="w-1/2 m-auto ">
@@ -13,4 +36,6 @@
     </div>
   </div>
 
+  <img src="assets/sala/book-t-l.svg" class="w-64 absolute top-0 left-0 z-0">
+  <img src="assets/sala/book-b-r.svg" class="w-64 absolute bottom-0 right-0 z-0">
 </div>

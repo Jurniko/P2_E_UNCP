@@ -1,0 +1,42 @@
+<div class="w-full h-screen px-16">
+  <div class="m-auto">
+    <m-h type="p-1">SALAS CREADAS</m-h>
+  </div>
+  <div class="w-9/12 m-auto my-4">
+    <div class="w-full flex flex-wrap justify-center">
+      <m-f-search (valueSearching)="searching = $event "></m-f-search>
+      <m-button (click)="newRoom()"> Agregar nueva Sala </m-button>
+    </div>
+  </div>
+  <table class="table-auto m-auto divide-y-4 divide-green-300 mt-4">
+    <thead>
+      <tr class="text-center font-sans text-lg tracking-wide">
+        <th class="px-4">Sala</th>
+        <th class="px-4">Fecha de creación</th>
+        <th class="px-4">Descripción</th>
+        <th class="px-4">Número de Invitados</th>
+        <th class="px-4">Número de Registrados</th>
+        <th class="px-4">Acciónes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center font-normal" *ngFor="let room of rooms | orderBy:'id':true | filter:searching | paginate: {itemsPerPage:10, currentPage: current}" >
+        <td>{{room?.code}}</td>
+        <td>{{room?.created_at | date:'dd-MM-yyyy HH:mm a'}}</td>
+        <td>{{room?.description}}</td>
+        <td>{{room?.total_students}}</td>
+        <td>{{room?.registered_students}}</td>
+        <td>
+          <m-button type="add" (click)="checkingRoom(room.id!)"> Revisar </m-button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <div class="text-center my-10 m-auto">
+          <pagination-controls (pageChange)="current = $event" [responsive]="true" screenReaderCurrentLabel="You're on page" ></pagination-controls>
+        </div>
+      </tr>
+    </tfoot>
+  </table>
+</div>

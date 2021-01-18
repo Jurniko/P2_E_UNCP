@@ -1,0 +1,44 @@
+<div class="w-full h-screen px-16">
+  <m-h type="p-1"> ESTUDIANTES </m-h>
+  <div class="w-8/12 m-auto">
+    <div class="w-full flex flex-wrap justify-center">
+      <m-f-search></m-f-search>
+    </div>
+  </div>
+
+  <table class="table-auto m-auto divide-y-4 divide-green-300">
+    <thead>
+      <tr class="text-center font-sans text-lg tracking-wide">
+        <th class="px-4">Código de Matricula</th>
+        <th class="px-4">Pseudónimo</th>
+        <th class="px-4">Facultad</th>
+        <th class="px-4">Semestre</th>
+        <th class="px-4">Fecha Iniciación</th>
+        <th class="px-4">Historial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let student of students | orderBy:'id':true | filter:searching | paginate: {itemsPerPage:10, currentPage: current}">
+        <td>{{student?.enrollment_code}}</td>
+        <td>{{student?.nickname}}</td>
+        <td>{{student.school?.school}}</td>
+        <td>{{student?.semester}}</td>
+        <td>{{student?.created_at | date:'dd-MM-yyyy HH:mm a' }}</td>
+        <td>
+          <m-button type="add" (click)="checkStudent(student.id!)">
+            Revisar
+          </m-button>
+        </td>
+      </tr>
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <div class="text-center my-10 m-auto">
+          <pagination-controls (pageChange)="current = $event" [responsive]="true" screenReaderCurrentLabel="You're on page" ></pagination-controls>
+        </div>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>

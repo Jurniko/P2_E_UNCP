@@ -1,0 +1,121 @@
+<svg id="Grupo_15912" data-name="Grupo 15912" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<style>
+
+  #estrella-1{
+    animation-name: caida;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #estrella-2{
+    animation-name: caida;
+    animation-duration: 4.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #papel-1{
+    animation-name: caida;
+    animation-duration: 5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #papel-2{
+    animation-name: caida;
+    animation-duration: 5.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #papel-3{
+    animation-name: caida;
+    animation-duration: 6s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #papel-4{
+    animation-name: caida;
+    animation-duration: 6.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #papel-5{
+    animation-name: caida;
+    animation-duration: 7s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+   #papel-6{
+    animation-name: caida;
+    animation-duration: 7.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #pelota-1{
+    animation-name: caida;
+    animation-duration: 8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+
+  @keyframes caida{
+    0%{
+      transform: translateY(-100%);
+    }
+    100%{
+      opacity: 0.5;
+      transform: translateY(100%);
+    }
+  }
+  </style>
+
+  <rect id="Rectángulo_497" data-name="Rectángulo 497" width="1920" height="1080" fill="#f4f4f4" opacity="0"/>
+  <path id="estrella-1" d="M111.6,49.544,116.9,60.3l11.869,1.725L120.185,70.4l2.027,11.821L111.6,76.637l-10.616,5.581L103.007,70.4l-8.588-8.372L106.288,60.3Z" fill="#ffff15" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="estrella-2" d="M548.955,39.891l11.9,1.487,7.972-8.961,2.264,11.778,10.986,4.813-10.5,5.793-1.182,11.935-8.755-8.2L549.923,61.1l5.091-10.86Z" fill="#ffc217" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="estrella-2" data-name="estrella-1" d="M1833.273,47.947l-6.1,10.326,5.046,10.881-11.705-2.612-8.789,8.162-1.133-11.94-10.478-5.836,11.006-4.767,2.313-11.768,7.935,8.994Z" fill="#f42c87" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="estrella-2" data-name="estrella-2" d="M1379.955,59.891l11.9,1.487,7.972-8.961,2.264,11.778,10.986,4.813-10.5,5.793-1.182,11.935-8.755-8.2L1380.923,81.1l5.091-10.86Z" fill="#ffc269" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <circle id="pelota-1" cx="18.749" cy="18.749" r="18.749" transform="translate(241.824 65.353) rotate(-45)" fill="#4f95cc" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <circle id="pelota-1" data-name="pelota-1" cx="9.198" cy="9.198" r="9.198" transform="translate(1163.78 74.802) rotate(-45)" fill="#50cccc" stroke="#742a00" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.472"/>
+  <g id="papel-1">
+    <rect id="Rectángulo_498" data-name="Rectángulo 498" width="33.631" height="9.811" transform="translate(74.044 46.412) rotate(-71.625)" fill="#ef546b"/>
+  </g>
+  <g id="papel-1" data-name="papel-1">
+    <rect id="Rectángulo_499" data-name="Rectángulo 499" width="11.907" height="40.817" transform="matrix(0.69, -0.724, 0.724, 0.69, 1576.724, 64.7)" fill="#95e0f9"/>
+  </g>
+  <g id="papel-1" data-name="papel-1">
+    <rect id="Rectángulo_500" data-name="Rectángulo 500" width="40.817" height="11.907" transform="translate(971.499 85.135) rotate(-83.864)" fill="#6bf795"/>
+  </g>
+  <g id="papel-2">
+    <rect id="Rectángulo_501" data-name="Rectángulo 501" width="13.07" height="44.802" transform="matrix(0.848, -0.53, 0.53, 0.848, 423.544, 54.208)" fill="#e8d162"/>
+  </g>
+  <g id="papel-2" data-name="papel-2">
+    <rect id="Rectángulo_502" data-name="Rectángulo 502" width="52.642" height="15.357" transform="translate(1714.117 90.382) rotate(-81.12)" fill="#d1ed85"/>
+  </g>
+  <g id="papel-3">
+    <rect id="Rectángulo_503" data-name="Rectángulo 503" width="33.631" height="9.811" transform="translate(716.176 108.672) rotate(-79.731)" fill="#fc88f4"/>
+  </g>
+  <g id="papel-3" data-name="papel-3">
+    <rect id="Rectángulo_504" data-name="Rectángulo 504" width="9.811" height="33.631" transform="matrix(0.95, -0.312, 0.312, 0.95, 1260.095, 78.553)" fill="#f973aa"/>
+  </g>
+  <g id="papel-4">
+    <rect id="Rectángulo_505" data-name="Rectángulo 505" width="24.007" height="7.003" transform="translate(476.587 41.203) rotate(-51.969)" fill="#3737ef"/>
+  </g>
+  <g id="papel-4" data-name="papel-4">
+    <rect id="Rectángulo_506" data-name="Rectángulo 506" width="45.022" height="13.134" transform="translate(1306.652 60) rotate(-58.761)" fill="#a20fb2"/>
+  </g>
+  <g id="papel-4" data-name="papel-4">
+    <rect id="Rectángulo_507" data-name="Rectángulo 507" width="11.11" height="51.785" transform="translate(38.77 13.83) rotate(-29.557)" fill="#63c9f7"/>
+  </g>
+  <g id="papel-5">
+    <rect id="Rectángulo_508" data-name="Rectángulo 508" width="16.207" height="50.461" transform="translate(730.99 45.711) rotate(-43.142)" fill="#4befd8"/>
+  </g>
+  <g id="papel-5" data-name="papel-5">
+    <rect id="Rectángulo_509" data-name="Rectángulo 509" width="16.207" height="50.461" transform="matrix(0.804, -0.594, 0.594, 0.804, 1685.648, 17.098)" fill="#4ced95"/>
+  </g>
+  <path id="papel-5" data-name="papel-5" d="M1160.245,32.377c-7.236,5.556-17.793,13-23.255,20.339,2.843.242,13.51-2.11,15.52.381,1.774,1.78-.847,10.543-.733,13.268,4.5-.7,19.808-14.065,21.83-18.682,2.14-4.262-1.531-5.808-5.79-9.132-2.248-2.018-5.089-3.445-6.743-6.054" fill="#e8e34d"/>
+  <g id="papel-6">
+    <rect id="Rectángulo_510" data-name="Rectángulo 510" width="16.207" height="50.461" transform="translate(922.99 21.711) rotate(-43.142)" fill="#d67ef2"/>
+  </g>
+  <g id="papel-6" data-name="papel-6">
+    <rect id="Rectángulo_511" data-name="Rectángulo 511" width="50.461" height="16.207" transform="matrix(0.356, -0.935, 0.935, 0.356, 1836.609, 52.279)" fill="#3d5bea"/>
+  </g>
+  <g id="papel-6" data-name="papel-6">
+    <rect id="Rectángulo_512" data-name="Rectángulo 512" width="16.207" height="50.461" transform="translate(276.975 34.479) rotate(-63.293)" fill="#43edff"/>
+  </g>
+  <path id="papel-6" data-name="papel-6" d="M599.5,37c4,11.5,9,28,16,38,1.5-3.5,3-18,7-19.5,3-1.5,13,5.5,16.5,6.5,1-6-9.5-31-14.5-35.5-4.5-4.5-8-.5-14,3.5-3.5,2-6.5,5-10.5,6" fill="#ff5900"/>
+  <path id="papel-4" data-name="papel-4" d="M177.438,35.563c6.169,6.72,14.513,16.583,22.3,21.38-.009-2.853-3.288-13.272-.983-15.493,1.618-1.924,10.577-.082,13.281-.434-1.1-4.425-15.749-18.5-20.526-20.107-4.433-1.757-5.651,2.034-8.589,6.569-1.812,2.416-2.984,5.371-5.438,7.248" fill="#f930e6"/>
+  <path id="papel-3" data-name="papel-3" d="M1473.944,32.805c4.041,8.18,9.288,19.985,15.42,26.771.791-2.742.562-13.662,3.4-15.148,2.091-1.394,10.176,2.884,12.871,3.3.187-4.554-9.938-22.169-14.073-25.051-3.763-2.929-5.995.37-10.085,3.9-2.417,1.812-4.369,4.321-7.251,5.435" fill="#4ee5ba"/>
+  <path id="papel-2" data-name="papel-2" d="M837,42.5c1,14,5,30.5,8.5,44C856,77.5,867.5,67,875,55c-11.5-5-25-8-36.5-12" fill="#00f3ff"/>
+  <path id="papel-3" data-name="papel-3" d="M1043,36.5c1,14,5,30.5,8.5,44,10.5-9,22-19.5,29.5-31.5-11.5-5-25-8-36.5-12" fill="#ff0"/>
+  <path id="papel-6" data-name="papel-6" d="M1638,20.5c1,14,5,30.5,8.5,44,10.5-9,22-19.5,29.5-31.5-11.5-5-25-8-36.5-12" fill="#ed43c1"/>
+</svg>

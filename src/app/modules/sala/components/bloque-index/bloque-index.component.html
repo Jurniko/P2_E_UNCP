@@ -1,0 +1,21 @@
+<m-navbar-lvl [lvl]="level" [enrollment_code]="studentData.enrollment_code!"></m-navbar-lvl><!-- log.student.enrollment_code! -->
+<div class="w-full h-full">
+  <bloque-text
+    *ngIf="firstBlockAvailable"
+    (finishedTextData)="blockTextData($event); firstBlockAvailable = false ; secondBlockAvailable = true"
+    [level]="level"
+  ></bloque-text>
+
+  <bloque-vid
+    *ngIf="secondBlockAvailable"
+    (finishedVidData)="blockVidData($event); finalScore = true"
+    [state_key]="stateKeyGenerated"
+    [level]="level"
+  ></bloque-vid>
+
+  <modal-final-score
+  *ngIf="finalScore"
+  (finished)="finished($event)"
+  >
+  </modal-final-score>
+</div>
