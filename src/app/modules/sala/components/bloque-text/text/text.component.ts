@@ -7,7 +7,7 @@ import { VoiceRecognitionService } from '../../../services/voice-recognition.ser
   templateUrl: './text.component.html'
 })
 export class TextComponent implements OnInit,OnChanges{
-  @Input() text:string = ` `;
+  @Input() text:string = `...`;
 
   isListening : boolean = false;
   textInner:string = '';

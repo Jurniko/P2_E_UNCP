@@ -17,6 +17,8 @@ import { OrderModule } from 'ngx-order-pipe'
 import {  NgxPaginationModule} from 'ngx-pagination';
 import { EditComponent } from './components/salas/edit/edit.component';
 import { TokenInterceptor } from 'src/app/core/TokenInterceptor.interceptor';
+import { LoadingInterceptor } from 'src/app/core/Loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [DocenteComponent, EstudiantesTestComponent, ResultadoLevelComponent, SalasComponent, ModalComponent, AddComponent,CardComponent, EditComponent],
@@ -29,7 +31,8 @@ import { TokenInterceptor } from 'src/app/core/TokenInterceptor.interceptor';
     HttpClientModule,
     Ng2SearchPipeModule,
     OrderModule,
-    NgxPaginationModule
-  ],
+    NgxPaginationModule,
+    NgxSpinnerModule
+  ]
 })
 export class DocenteModule { }

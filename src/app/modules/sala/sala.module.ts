@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SalaRoutingModule } from './sala-routing.module';
@@ -20,6 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SalaService } from './services/sala.service';
 import { FinalScoreComponent } from './components/bloque-index/final-score/final-score.component';
 import { TokenInterceptor } from 'src/app/core/TokenInterceptor.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [SalaComponent, RegisterComponent, LevelsComponent, BloqueTextComponent, BloqueVidComponent, ResultadoComponent, TextComponent, VidComponent, BloqueIndexComponent, FinalScoreComponent],
@@ -31,13 +32,8 @@ import { TokenInterceptor } from 'src/app/core/TokenInterceptor.interceptor';
     SharedModule,
     YouTubePlayerModule,
     HttpClientModule,
-
+    NgxSpinnerModule
   ],
-  providers:[SalaService,
-  {
-    provide:HTTP_INTERCEPTORS,
-    useClass:TokenInterceptor,
-    multi:true
-  }]
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SalaModule { }

@@ -36,7 +36,7 @@ export class BloqueTextComponent implements OnInit{
 
   @Input() level : number = 1 ;
   block : number = 1 ;
-  problem : Problem = {} as Problem ;
+  problem : Problem = {body:"Cargando..."} as Problem;
 
   constructor( private salaService:SalaService, private formBuilder:FormBuilder) {}
 
@@ -53,7 +53,7 @@ export class BloqueTextComponent implements OnInit{
   }
 
   init$(){
-    this.salaService.getProblem$(this.level,this.block).subscribe(res=>{this.problem = res[0];console.log(res[0])})
+    this.salaService.getProblem$(this.level,this.block).subscribe(res=>this.problem = res[0])
   }
 
   startRecordingTime(){
