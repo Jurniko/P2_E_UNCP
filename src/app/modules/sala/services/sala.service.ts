@@ -43,7 +43,6 @@ export class SalaService {
 
 
   getAllSchools$(){
-    console.log(this.domain+this.path.school)
     return this.http.get<School[]>(this.domain+this.path.school.p);
   }
 

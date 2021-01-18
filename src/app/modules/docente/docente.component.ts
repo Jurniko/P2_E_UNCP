@@ -22,13 +22,11 @@ export class DocenteComponent implements OnInit{
 
   init$(){
     this.authService.infoTeacher().subscribe((res:Teacher)=>{
-      console.log(res)
       this.teacher = res;
     })
   }
 
   greetActivated(){
-    console.log(this.route.url)
     if(this.route.url == "/docente"){
       this.greet = true;
     }else{this.greet = false};
@@ -43,7 +41,6 @@ export class DocenteComponent implements OnInit{
 
   logoutTeacher(){
     this.authService.logoutTeacher().subscribe(res=>{
-      console.log("Ya salio el teacher")
 
       localStorage.removeItem('token')
       this.route.navigate([`/login`])

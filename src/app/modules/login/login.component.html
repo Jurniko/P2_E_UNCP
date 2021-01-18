@@ -1,14 +1,17 @@
 <div class="w-full h-full px-16 bg-gradient-to-r from-green-300 to-blue-400">
     <div class="w-4/12  m-auto flex justify-center items-center h-screen">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="rounded-xl shadow p-8 px-12 bg-white">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="rounded-xl shadow-2xl p-8 px-12 bg-white">
 
         <div class="flex items-center justify-center">
           <img src="assets/auth/uncp.svg" class="w-32">
           <h1 class="text-center my-4 font-semibold text-xl">Iniciar Sesión</h1>
         </div>
         <hr class="bg-green-400 h-1 my-2">
-        <m-f-input label="Email" type="email" [formGroup]="form" controlName="email"></m-f-input>
-        <m-f-input label="Contraseña"  type="password" [formGroup]="form" controlName="password"></m-f-input>
+        <div class="my-8">
+          <m-f-input label="Email" type="email" [formGroup]="form" controlName="email"></m-f-input>
+          <m-f-input label="Contraseña"  type="password" [formGroup]="form" controlName="password"></m-f-input>
+        </div>
+
 
         <span class="text-red-500 font-normal tracking-wider text-lg" *ngIf="error"> Credenciales incorrectas. Intente de nuevo.</span>
         <div class="flex justify-between">

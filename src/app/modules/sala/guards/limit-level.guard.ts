@@ -15,9 +15,7 @@ export class LimitLevelGuard implements CanActivate {
       let routeInserted = route.params.lvl
 
       if(routeInserted <= 3){
-        console.log("GUARD")
         return this.salaService.postLevelsStudents$().pipe(map((e:any)=>{
-          console.log("GUARD, chinga su madre:",e,",",routeInserted)
 
           if( !e && routeInserted == 1 ){
               return true

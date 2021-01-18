@@ -21,8 +21,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.blocks = this.data[this.codeGroupBlock]
-    console.log(this.codeGroupBlock)
-    console.log(this.blocks,"EEreasd")
   }
 
   isCorrect(block:BodyReportLevel,idQuestion:number){

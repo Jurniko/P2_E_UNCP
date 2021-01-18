@@ -33,15 +33,12 @@ export class BloqueIndexComponent implements OnInit {
 
   init$(){
     this.salaService.postProgress$(this.level).subscribe((res:Logs)=>{//!! Como parametro va en estudiante
-      console.log(res , " ALV")
       this.log = res
-      console.log("Progress",res)
 
       if(res.state_key != "" || res.state_key ){
         this.stateKeyGenerated = res.state_key
       }
       if(!res){ // si es nulo
-        console.log("la huevada ta vacio")
         this.firstBlockAvailable = true;
         this.secondBlockAvailable = false;
       }
@@ -72,13 +69,11 @@ export class BloqueIndexComponent implements OnInit {
   blockTextData(logs:Logs){
     this.salaService.postSaveLogForBlock(logs).subscribe((res:Logs)=>{
         this.stateKeyGenerated = res.state_key;
-        console.log("stateKey Generado", this.stateKeyGenerated)
     })
   }
 
   blockVidData(logs:Logs){
     this.salaService.postSaveLogForBlock(logs).subscribe(res=>{
-      console.log(res,"DATA DEVOLVIDA BLOCK VIDEO")
   })
   }
 

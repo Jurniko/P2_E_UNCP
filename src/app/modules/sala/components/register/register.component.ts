@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
       this.codigoSala = param.codigo;
       this.salaService.getInvitedStudents$(this.codigoSala).subscribe((res:any)=>{
         this.invitedStudents = res;
-        console.log(this.invitedStudents)
       })
     })
 
@@ -65,9 +64,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     if( isCorrect ){
-      console.log("a")
       this.authService.postRegisterStudent$(this.form.value).subscribe((res:any)=>{
-        console.log(res,"estudiante creado ",res.token)
         localStorage.setItem("token",res.token)
 
         this.route.navigate([`/sala/${this.codigoSala}/lvl`])

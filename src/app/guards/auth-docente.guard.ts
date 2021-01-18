@@ -14,7 +14,6 @@ export class AuthDocenteGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         return this.authDocente.infoTeacher().pipe(map(e=>{
-            console.log(state.url)
           if(state.url == "/login"){
             this.router.navigate(['/docente']);
           }

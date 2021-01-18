@@ -41,7 +41,6 @@ export class TextComponent implements OnInit,OnChanges{
     this.textSacri = this.text;
     this.textInner =  this.addTagHTML(this.text);
     this.voiceService.start().subscribe(res=>{
-      console.log(res,"obsersanvo")
       let a =  res.split(' ');
       let length = a.length;
 
@@ -60,7 +59,6 @@ export class TextComponent implements OnInit,OnChanges{
 
     if( this.textSacri.length < 100){ // Si solo quedan 50 letras por leer, se pueda usar el botón siguiente.
       this.sucessfulRead.emit(true);
-      console.log("El tiempo de velocidad de lectura es de ", this.PPM())
       this.ppm.emit(this.PPM());
     }else{
       this.sucessfulRead.emit(false);
@@ -83,7 +81,6 @@ export class TextComponent implements OnInit,OnChanges{
     this.textSacri = this.text.substring( this.indiceGuia,this.text.length+1); // LE DAMOS SU RESTO
 
     let textAntes = this.text.substring(0, this.indiceGuia);
-    console.log("Length de texto que falta leer", this.textSacri.length)
     let textDespues = this.text.substring( this.indiceGuia,this.text.length+1);
     this.textInner = '<mark>'+textAntes+'</mark>'+textDespues
   }
@@ -92,7 +89,6 @@ export class TextComponent implements OnInit,OnChanges{
     this.intervalFunction = setInterval(()=>{
       this.readingTimeInSeconds += 1;
       this.readingTimeInSeconds = +(this.readingTimeInSeconds.toFixed(2));
-      console.log(this.readingTimeInSeconds)
     },1000)
 
   }

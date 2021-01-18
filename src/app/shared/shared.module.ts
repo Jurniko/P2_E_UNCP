@@ -11,11 +11,12 @@ import { QuestionsLvlComponent } from './questions-lvl/questions-lvl.component';
 import { MNavbarLvlComponent } from './m-navbar-lvl/m-navbar-lvl.component';
 import { MFSelectComponent } from './form/m-f-select/m-f-select.component';
 import { MFTextareaComponent } from './form/m-f-textarea/m-f-textarea.component';
+import { NotFoundErrorComponent } from './not-found-error/not-found-error.component';
 
 
 
 @NgModule({
-  declarations: [MLevelComponent, MButtonComponent,MFInputComponent, MFRadioComponent, MFSearchComponent, MHComponent, QuestionsLvlComponent, MNavbarLvlComponent, MFSelectComponent, MFTextareaComponent],
+  declarations: [MLevelComponent, MButtonComponent,MFInputComponent, MFRadioComponent, MFSearchComponent, MHComponent, QuestionsLvlComponent, MNavbarLvlComponent, MFSelectComponent, MFTextareaComponent, NotFoundErrorComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule

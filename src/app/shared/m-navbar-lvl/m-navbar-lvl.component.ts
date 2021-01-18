@@ -22,12 +22,13 @@ export class MNavbarLvlComponent implements OnInit {
       localStorage.removeItem('token')
       this.route.navigate(['sala'])
 
-      console.log(res,"eliminado token")
     });
   }
 
   home(){
-    this.location.back();
+    if( this.route.url.split('/').length != 4  ){
+      this.location.back();
+    }
   }
 
 }

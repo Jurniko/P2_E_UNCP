@@ -16,11 +16,11 @@ export class LevelsComponent implements OnInit {
   studentData:Student = {} as Student;
 
   styleEnabled ={
-    css: "rounded bg-green-400 hover:bg-green-300 py-4 px-8 text-white text-xl font-normal flex justify-between items-center w-full shadow-xl my-4",
+    css: "rounded bg-green-400 hover:bg-green-300 py-4 px-8 text-white text-xl font-semibold tracking-wider flex justify-between items-center w-full shadow-xl my-4",
     svg: "assets/sala/unlocked.svg"
   }
   styleDisabled={
-    css: "rounded bg-green-600 py-4 px-8 text-white text-xl font-normal flex justify-between items-center w-full shadow-xl my-4",
+    css: "rounded bg-green-600 py-4 px-8 text-white text-xl font-semibold  tracking-widerflex justify-between items-center w-full shadow-xl my-4",
     svg: "assets/sala/locked.svg"
   }
 
@@ -32,7 +32,6 @@ export class LevelsComponent implements OnInit {
 
   init$(){
     this.salaService.postLevelsStudents$().subscribe((res:any)=>{
-      console.log(res,"el nivel")
       if(!res){
         this.maxLevel = 0;
       }else{
@@ -44,7 +43,6 @@ export class LevelsComponent implements OnInit {
   }
 
   goLevel(level:number){
-    console.log(this.route.url)
     this.route.navigate([this.route.url+`/${level}`])
   }
 

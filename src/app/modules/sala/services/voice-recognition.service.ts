@@ -25,7 +25,6 @@ export class VoiceRecognitionService {
     return Observable.create((observer:Observer<string>)=>{
       this.isStoppedSpeechRecog = false;
       this.recognition.start();
-      console.log("Speech recognition started")
 
       this.recognition.addEventListener('result', (e : any) => {
         const transcript = Array.from(e.results)
@@ -39,13 +38,12 @@ export class VoiceRecognitionService {
       this.recognition.addEventListener('end', (condition:any) => {
           if (this.isStoppedSpeechRecog) {
           this.recognition.stop();
-          console.log("End speech recognition")
           observer.complete();
           } else {
 
           this.wordConcat();
           observer.next( this.text )
-          
+
           this.text = ""; //Para no sobrecargar
           this.recognition.start();
           }
@@ -59,11 +57,9 @@ export class VoiceRecognitionService {
     this.isStoppedSpeechRecog = true;
     this.wordConcat()
     this.recognition.stop();
-    console.log("End speech recognition")
   }
 
   wordConcat() {
-    console.log(this.text, " texto ")
     this.text = this.text + ' ' + this.tempWords + '.';
     this.tempWords = '';
   }

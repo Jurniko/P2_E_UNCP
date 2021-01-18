@@ -37,7 +37,6 @@ export class EditComponent implements OnInit {
       this.url +=this.roomData.code;
       this.form.get('description')?.setValue(this.roomData.description);
       this.form.get('enrollment_codes')?.setValue(this.roomData.enrollment_codes?.join());
-      console.log(this.roomData)
     })
   }
   copyCode(input : any){
@@ -54,7 +53,6 @@ export class EditComponent implements OnInit {
     roomF.id = this.idRoom;
     roomF.description = this.form.get('description')?.value;
     roomF.enrollment_codes = (this.form.get('enrollment_codes')?.value).split(',');
-    console.log(roomF.enrollment_codes)
     this.docenteService.editRoom(roomF).subscribe((res:Room)=>{
       this.openModal = true ;
       this.route.navigate(["/docente/salas/"])

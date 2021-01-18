@@ -8,7 +8,7 @@
           [class]="maxLevel>=0? styleEnabled.css : styleDisabled.css "
           [disabled]="maxLevel>=0? false:true"
           (click)="goLevel(1)">
-          Nivel 1 : Pruebas básicas
+          Nivel 1 : <span class="font-light text-left"> Pruebas Básicas</span>
           <img [src]="maxLevel>=0? styleEnabled.svg : styleDisabled.svg"/>
         </button>
 
@@ -16,7 +16,7 @@
           [class]="maxLevel>=1? styleEnabled.css : styleDisabled.css "
           [disabled]="maxLevel>=1? false:true"
           (click)="goLevel(2)">
-          Nivel 2 : Pruebas Intermedias
+          Nivel 2 :  <span class="font-light text-left"> Pruebas Intermedias</span>
           <img [src]="maxLevel>=1? styleEnabled.svg : styleDisabled.svg"/>
         </button>
 
@@ -24,7 +24,7 @@
         [class]="maxLevel>=2? styleEnabled.css : styleDisabled.css "
         [disabled]="maxLevel>=2? false:true"
         (click)="goLevel(3)">
-          Nivel 3 : Pruebas Avanzadas
+          Nivel 3 : <span class="font-light text-left"> Pruebas Avanzadas</span>
           <img [src]="maxLevel>=2? styleEnabled.svg : styleDisabled.svg"/>
         </button>
       </div>

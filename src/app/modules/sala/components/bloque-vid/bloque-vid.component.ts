@@ -57,7 +57,6 @@ export class BloqueVidComponent implements OnInit {
           question4:[,Validators.required],
         })
       }
-      console.log(this.problem,"bloque 2, Problem")
     })
   }
 
@@ -82,7 +81,6 @@ export class BloqueVidComponent implements OnInit {
     logs.correct_questions_id = extractCorrectAternatives(this.problem.questions,this.form.value)
     logs.duration = this.timeInSeconds
     logs.problem_id = this.problem.id ;
-    console.log(logs,"final!")
 
     this.finishedVidData.emit(logs);
   }

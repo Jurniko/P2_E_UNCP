@@ -21,16 +21,14 @@ export class ResultadoLevelComponent implements OnInit {
   ngOnInit(): void {
     this.rutaActiva.params.subscribe((param:Params)=>{
       this.studentId = param.id
-      console.log(param)
       this.init$();
     })
 
   }
-  
+
   init$(){
     this.docenteSevice.getStudentsById(this.studentId).subscribe((res:any)=>{
       this.result = res
-      console.log(this.result)
     })
   }
 

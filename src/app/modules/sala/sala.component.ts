@@ -52,9 +52,7 @@ export class SalaComponent implements OnInit {
         })
         break;
       case "account":
-        console.log(this.form.value)
         this.authService.studenLogin(this.form.value).subscribe((res:any)=>{
-          console.log("resssss, ingresando",res)
           localStorage.setItem('token',res.token)
           this.route.navigate(["/sala/"+res.student.code.code+"/lvl"])
         }, err=>{

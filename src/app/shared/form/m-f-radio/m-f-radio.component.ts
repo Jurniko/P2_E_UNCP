@@ -18,7 +18,6 @@ export class MFRadioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.controlName)
     this.formControl= this.formGroup.get(this.controlName) as FormControl;
   }
 

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.authService.loginTeacher(this.form.value).subscribe((res:any)=>{
-      console.log("res :",res)
       localStorage.setItem('token',res.token);
       this.route.navigate(['/docente']);
 

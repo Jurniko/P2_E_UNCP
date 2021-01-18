@@ -39,8 +39,6 @@ export const environment = {
         roomPlural:"teacher/rooms/",
         roomUpdate:"teacher/room/update/"
       },
-
-
   }
 };
 

@@ -24,7 +24,6 @@ export class FinalScoreComponent implements OnInit {
       this.block_1 = res.block_1;
       this.block_2 = res.block_2;
       this.average = res.average
-      console.log(res)
     })
   }
 }

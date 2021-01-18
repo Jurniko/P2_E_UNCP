@@ -13,7 +13,7 @@ export class DocenteService {
   path = environment.path
   constructor(private httpCliente:HttpClient) { }
 
-  
+
   //TOKEN
   getAllStudents(){
     return this.httpCliente.get<Student[]>(this.domain+this.path.teacher.student);
@@ -28,7 +28,6 @@ export class DocenteService {
   }
 //TOKEN
   createRoom(room:Room){
-    console.log(room)
     return this.httpCliente.post<Room>(this.domain+this.path.teacher.room,room)
   }
 //TOKEN

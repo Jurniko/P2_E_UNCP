@@ -18,14 +18,17 @@
         <p class="font-semibold inline-flex" *ngFor="let question of block.problem?.questions! ; let i = index">
           Pregunta {{i+1}} :
           <span class="inline-flex font-normal" *ngIf="isCorrect(block,question.id!)"> <img
-              src="assets/estudiante/buena.svg" class="w-6 mx-2"> {{question.value!}} puntos </span>
+              src="assets/estudiante/buena.svg" class="w-6 mx-2"> {{question.value!}} puntos
+             
+          </span>
           <br>
           <span class="inline-flex font-normal" *ngIf="!isCorrect(block,question.id!)"> <img
-              src="assets/estudiante/mal.svg" class="w-6 mx-2"> 0 puntos </span>
+              src="assets/estudiante/mal.svg" class="w-6 mx-2"> 0 puntos
+          </span>
         </p> <br>
 
         <br>
-        <p class="font-semibold italic"> Nota : {{block?.score!}} </p>
+        <p class="font-semibold italic"> Nota Total : {{block?.score!}} </p>
         <p class="font-semibold italic"> Tiempo : <br>
           <span [innerHTML]="minutesAndSeconds(block?.duration!)"> </span> </p>
       </div>

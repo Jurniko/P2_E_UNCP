@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         return this.authService.studentInfo().pipe(map((res:any)=>{
-          console.log("si tiene su tolen",state.url.length)
           if(state.url.split('/').length<=3){
             this.router.navigate([`sala/${res.code.code}/lvl`])
           }

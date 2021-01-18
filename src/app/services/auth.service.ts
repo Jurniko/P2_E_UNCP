@@ -35,7 +35,6 @@ export class AuthService {
 
   //Rememember_me : boolean    ->  true = 1 semana , false = no pasa nada
   loginTeacher(teacherData:{email:string,password:string}){
-    console.log()
     return this.http.post(this.domain+this.path.teacher.login,teacherData).pipe(map((e:any)=>e.data));
   }
   //TOKEN

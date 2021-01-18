@@ -82,7 +82,7 @@ export class BloqueTextComponent implements OnInit{
     logs.level_id = this.level ;
     logs.problem_id = this.problem.id ;
 
-    console.log(logs)
+    (logs)
     this.finishedTextData.emit(logs)
 
 

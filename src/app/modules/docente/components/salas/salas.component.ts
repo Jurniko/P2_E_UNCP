@@ -24,7 +24,6 @@ export class SalasComponent implements OnInit {
   init$(){
     this.docenteService.getAllRooms().subscribe((res:Room[])=>{
       this.rooms = res;
-      console.log(this.rooms)
     })
   }
   newRoom(){
@@ -34,5 +33,5 @@ export class SalasComponent implements OnInit {
   checkingRoom(code:string){
     this.route.navigate(['docente/salas/'+code])
   }
-  
+
 }

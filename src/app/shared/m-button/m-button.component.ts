@@ -20,13 +20,13 @@ export class MButtonComponent implements OnInit {
     type = type.toLocaleLowerCase();
     switch(type){
       case "normal":
-        classInit += " bg-blue-600 hover:bg-blue-700"
+        classInit += " bg-purple-500 hover:bg-purple-700"
         break;
       case "add":
         classInit += " bg-green-400 hover:bg-green-500"
         break;
       case "back":
-        classInit += " bg-red-500 hover:bg-red-400 "
+        classInit += " bg-pink-500 hover:bg-pink-700 "
         break;
     }
 
