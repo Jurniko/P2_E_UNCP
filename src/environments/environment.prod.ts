@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  domainFront:"http://localhost:4200/",
-  domain:"http://127.0.0.1:8000/api/v1/",
+  domainFront:"https://cunasoft.com/FIS/app",
+  domain:"https://cunasoft.com/FIS/quizzapp/api/v1/",
   path:{
 
       student:{

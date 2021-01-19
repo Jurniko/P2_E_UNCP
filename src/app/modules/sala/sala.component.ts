@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { SalaService } from './services/sala.service';
 
@@ -15,6 +16,8 @@ export class SalaComponent implements OnInit {
   existCode : boolean = true;
 
   existStudent : boolean = true;
+
+
   constructor(private formBuilder : FormBuilder,private route:Router, private salaService:SalaService, private authService:AuthService) { }
 
   ngOnInit(): void {

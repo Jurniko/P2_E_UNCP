@@ -38,6 +38,7 @@ export class TextComponent implements OnInit,OnChanges{
 
   startSpeech() {
     this.readingTimeInSeconds = 0; // reiniciamos el tiempo de lectura
+    this.indiceGuia=0;
     this.textSacri = this.text;
     this.textInner =  this.addTagHTML(this.text);
     this.voiceService.start().subscribe(res=>{
@@ -98,8 +99,8 @@ export class TextComponent implements OnInit,OnChanges{
   }
 
   PPM() : number{
-    let minutes = this.readingTimeInSeconds/60;
-    return +((this.numberWords/minutes).toFixed(2));
+    const minutes  = (this.readingTimeInSeconds / 60 ) % 60;
+    return +(this.numberWords/minutes).toFixed(2);
   }
 
 }

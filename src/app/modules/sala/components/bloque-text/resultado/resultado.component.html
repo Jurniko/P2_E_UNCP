@@ -5,9 +5,9 @@
 
       <img src="assets/sala/celebration.svg" alt="">
       <div class="text-center mx-8">
-        <h2 class="text-white font-semibold text-2xl "> Tu velocidad de lectura es: </h2>
+        <h2 class="text-white font-semibold text-2xl "> Tu velocidad de lectura es: <span class="font-bold"> {{result.nivel}}</span> </h2>
         <h3 class="text-white font-extrabold text-4xl my-4 "> {{ppmValue}} ppm</h3>
-        <p class="text-white text-xl "> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora rerum ipsum, magnam quam quaerat hic corporis officia eligendi voluptatibus quisquam nesciunt unde facere sunt delectus exercitationem, tempore culpa dolorem fugit?</p>
+        <p class="text-white text-2xl "> {{result.message}}</p>
       </div>
       <div class="no-flex justify-center">
         <m-button (click)="next.emit(true)"> Siguiente </m-button>

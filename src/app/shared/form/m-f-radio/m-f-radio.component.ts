@@ -21,4 +21,7 @@ export class MFRadioComponent implements OnInit {
     this.formControl= this.formGroup.get(this.controlName) as FormControl;
   }
 
+  firstLetterUpperCase(text:string){
+    return text[0].toUpperCase() + text.substr(1);
+  }
 }
