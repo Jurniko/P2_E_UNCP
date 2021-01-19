@@ -10,12 +10,12 @@ import { LimitLevelGuard } from './guards/limit-level.guard';
 import { SalaComponent } from './sala.component';
 
 const routes: Routes = [
-  { path: '', component: SalaComponent ,canActivate:[AuthGuard]},
-  
+  { path: '', component: SalaComponent ,canActivate:[AuthGuard] , pathMatch:"full"},
+
   { path: ':codigo', canActivate:[ExistCodeRoomGuard,AuthGuard],children:[
-    { path: '',component:RegisterComponent},
+    { path: '',component:RegisterComponent , pathMatch:"full"},
     { path: 'lvl',children:[
-      { path:'',component:LevelsComponent},
+      { path:'',component:LevelsComponent , pathMatch:"full"},
       { path: ':lvl', canActivate:[LimitLevelGuard] ,component:BloqueIndexComponent }
     ]}
   ]},

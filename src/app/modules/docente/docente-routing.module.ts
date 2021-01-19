@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'salas',
         children: [
-          { path: '', component: SalasComponent },
+          { path: '', component: SalasComponent  },
           { path: ':id', component: EditComponent},
         ],
       },

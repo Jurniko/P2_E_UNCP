@@ -5,7 +5,7 @@ import { AuthDocenteGuard } from 'src/app/guards/auth-docente.guard';
 import { LoginComponent } from './login.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, canActivate:[AuthDocenteGuard] }
+  { path: '', component: LoginComponent, canActivate:[AuthDocenteGuard] , pathMatch:"full" }
 ];
 
 @NgModule({

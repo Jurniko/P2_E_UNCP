@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,15 +17,17 @@ export class EditComponent implements OnInit {
   roomData : Room = {} as Room;
   form:FormGroup = new FormGroup({});
 
-  url = environment.domainFront+"sala/";
-  constructor(private rutaActiva:ActivatedRoute,private formBuilder:FormBuilder, private docenteService:DocenteService,private route:Router) { }
+  url :string = "";
+
+  constructor(private rutaActiva:ActivatedRoute,private formBuilder:FormBuilder, private docenteService:DocenteService,private route:Router,location:Location) { }
 
   ngOnInit(): void {
     this.rutaActiva.params.subscribe(param=>{
       this.idRoom = param.id;
       this.init$();
     })
-
+    this.url = location.origin+"/"
+    console.log(location)
     this.form = this.formBuilder.group({
       description:['',Validators.required],
       enrollment_codes:['',Validators.required]

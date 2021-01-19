@@ -1,8 +1,8 @@
 <div class="w-full h-screen">
   <div class="bg-purple-50 h-16 px-8 flex justify-between items-center">
     <div>
-      <p class="font-semibold ">Código de Matricula : <span class="font-normal"> {{result.student.enrollment_code}} </span></p>
-      <p class="font-semibold ">Pseudónimo : <span class="font-normal"> {{result.student.nickname}} </span></p>
+      <p class="font-semibold ">Código de Matricula : <span class="font-normal"> {{result.student?.enrollment_code!}} </span></p>
+      <p class="font-semibold ">Pseudónimo : <span class="font-normal"> {{result.student?.nickname!}} </span></p>
     </div>
   </div>
 

@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  domainFront:"http://localhost:4200/",
   domain:"http://127.0.0.1:8000/api/v1/",
   path:{
 

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -8,14 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class ModalComponent implements OnInit {
   @Input() codeRoom : string = '';
-  domain : string = environment.domainFront + "sala/"+this.codeRoom;
+  domain : string = "";
 
   @Output() back : EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private route:Router) { }
+  constructor(private route:Router, private location:Location) { }
 
   ngOnInit(): void {
-    this.domain += this.codeRoom
+    this.domain = location.origin+"/"+this.codeRoom
   }
 
   copyCode(input : any){
