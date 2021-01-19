@@ -13,8 +13,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{
-    enableTracing : true,
-    preloadingStrategy:PreloadAllModules
+    enableTracing : false,
+    preloadingStrategy:PreloadAllModules,
+    useHash:true
   })],
   exports: [RouterModule]
 })
