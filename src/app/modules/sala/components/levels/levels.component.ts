@@ -20,7 +20,7 @@ export class LevelsComponent implements OnInit {
     svg: "assets/sala/unlocked.svg"
   }
   styleDisabled={
-    css: "rounded bg-green-600 py-4 px-8 text-white text-xl font-semibold  tracking-widerflex justify-between items-center w-full shadow-xl my-4",
+    css: "rounded bg-green-600                    py-4 px-8 text-white text-xl font-semibold  tracking-wider flex justify-between items-center w-full shadow-xl my-4",
     svg: "assets/sala/locked.svg"
   }
 
