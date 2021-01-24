@@ -21,14 +21,14 @@ export class MHComponent implements OnInit {
     let classInit = 'py-8 ';
     switch(type){
       case "p-1":
-        classInit += " text-center text-5xl font-extrabold tracking-widest";
+        classInit += " text-center lg:text-5xl md:text-4xl text-3xl font-extrabold tracking-widest";
         break;
 
       case "p-2":
-        classInit += " text-center text-4xl font-extrabold tracking-widest";
+        classInit += " text-center lg:text-4xl md:text-3xl text-2xl font-extrabold tracking-widest";
         break;
       case "p-3":
-        classInit += " text-center text-3xl font-extrabold tracking-widest";
+        classInit += " text-center lg:text-3xl md:text-2xl text-xl font-extrabold tracking-widest";
         break;
       case "p-4":
         break;

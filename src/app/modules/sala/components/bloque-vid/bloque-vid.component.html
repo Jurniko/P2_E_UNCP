@@ -1,6 +1,6 @@
-<div class="w-full h-screen ">
+<div class="w-full md:h-screen sm:h-full ">
   <div [class]="'flex-col justify-center items-center h-full w-full text-center '+randomBgProblem " *ngIf="vid">
-    <div class="bg-white shadow-2xl h-full w-9/12 m-auto px-16">
+    <div class="bg-white shadow-2xl h-full lg:w-9/12 md:w-10/12 w-11/12 m-auto px-16">
       <m-h type="p-1"> BLOQUE VIDEO</m-h>
       <app-vid [videoId]="problem.body!" (finishVid)="finishedVid = true"></app-vid>
       <p class="font-semibold text-red-400 ">Nota: <span class="font-normal text-red-400"> Para poder seguir con las preguntas,
@@ -16,7 +16,7 @@
 
     <div class="static w-full top-0 bg-no-repeat z-0 bg-cover "
     [style]="randomBgQuestion">
-    <div class="bg-white w-7/12 m-auto shadow-2xl ">
+    <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl ">
       <m-h type="p-1">CUESTIONARIO</m-h>
       <form *ngIf="problem.questions" (ngSubmit)="onSubmit()" [formGroup]="form" >
 

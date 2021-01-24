@@ -16,11 +16,11 @@ export class LevelsComponent implements OnInit {
   studentData:Student = {} as Student;
 
   styleEnabled ={
-    css: "rounded bg-green-400 hover:bg-green-300 py-4 px-8 text-white text-xl font-semibold tracking-wider flex justify-between items-center w-full shadow-xl my-4",
+    css: "rounded bg-green-400 hover:bg-green-300 py-4 lg:px-8 md:px-6 px-4 text-white text-xl font-semibold tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
     svg: "assets/sala/unlocked.svg"
   }
   styleDisabled={
-    css: "rounded bg-green-600                    py-4 px-8 text-white text-xl font-semibold  tracking-wider flex justify-between items-center w-full shadow-xl my-4",
+    css: "rounded bg-green-600                    py-4 lg:px-8 md:px-6 px-4 text-white text-xl font-semibold  tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
     svg: "assets/sala/locked.svg"
   }
 

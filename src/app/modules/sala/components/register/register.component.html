@@ -1,12 +1,12 @@
-<div class="w-full h-screen px-16">
-  <div class="flex justify-center items-center h-full">
+<div class="w-full h-screen lg:px-16 md:px-8 px-4">
+  <div class="flex flex-col md:flex-row justify-center items-center h-full">
 
-    <div class="w-1/2 m-auto ">
+    <div class="lg:w-6/12 md:w-10/12 w-full m-auto">
       <img src="assets/sala/form-user.svg" class="w-84" alt="Espera">
     </div>
-    <div class="w-1/2 m-auto text-right" [hidden]="next">
-      <h1 class="text-6xl font-extrabold">Antes de comenzar rellene el siguiente formulario.</h1>
-      <div class="flex justify-end">
+    <div class="lg:w-6/12 w-full m-auto text-right" [hidden]="next">
+      <h1 class="lg:text-6xl md:text-5xl text-4xl font-extrabold md:text-right text-center ">Antes de comenzar rellene el siguiente formulario.</h1>
+      <div class="flex md:justify-end justify-center">
         <m-button type="back" (click)="back()"> Atrás </m-button>
         <span class="px-4"></span>
         <m-button type="normal" (click)="next = true"> Siguiente </m-button>
@@ -14,8 +14,8 @@
 
     </div>
 
-    <div class="w-1/2 m-autot" [hidden]="!next">
-      <form class="w-7/12 m-auto" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="lg:w-6/12 md:w-10/12 w-full m-auto" [hidden]="!next">
+      <form class="lg:w-7/12 md:w-9/12 sm:w-10/12 w-full m-auto" [formGroup]="form" (ngSubmit)="onSubmit()">
 
         <m-f-input label="Código de Matricula" [formGroup]="form" controlName="enrollment_code"> </m-f-input>
         <m-f-input label="Pseudónimo" [formGroup]="form" controlName="nickname"> </m-f-input>
@@ -36,6 +36,6 @@
 
   </div>
 
-  <img src="assets/sala/book-t-l.svg" class="w-64 absolute top-0 left-0 z-0">
-  <img src="assets/sala/book-b-l.svg" class="w-64 absolute bottom-0 left-0 z-0">
+  <img src="assets/sala/book-t-l.svg" class="sm:w-64 w-32 absolute top-0 left-0 z-0">
+  <img src="assets/sala/book-b-l.svg" class="md:w-64 w-0 absolute bottom-0 left-0 z-0">
 </div>

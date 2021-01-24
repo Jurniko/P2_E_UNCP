@@ -1,18 +1,18 @@
 
 
-<div class="w-full h-16 bg-gradient-to-r from-yellow-400 to-blue-500 flex justify-between items-center px-16 static text-white font-semibold ">
+<div class="w-full h-16 bg-gradient-to-r from-yellow-400 to-blue-500 flex justify-between items-center lg:px-16 md:px-8 px-2 static text-white font-semibold ">
 
     <div class="flex ">
-      <div class="px-8 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer flex items-center mx-2" (click)="logoutTeacher()">
+      <div class="md:px-8 px-2 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer flex items-center mx-2" (click)="logoutTeacher()">
         Salir de Cuenta <img src="assets/auth/back.svg" class=" ml-2 w-6">
       </div>
     </div>
 
      <div class="flex ">
-      <div class="px-8 mx-4 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer"  (click)="nextPage('salas')">
+      <div class="md:px-8 px-2 mx-4 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer"  (click)="nextPage('salas')">
           Salas
       </div>
-      <div class="px-8 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer" (click)="nextPage('estudiantes')">
+      <div class="md:px-8 px-2 py-2 bg-green-400 hover:bg-green-500 rounded-full cursor-pointer" (click)="nextPage('estudiantes')">
           Estudiantes
       </div>
      </div>

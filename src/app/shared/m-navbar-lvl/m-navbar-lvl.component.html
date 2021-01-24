@@ -1,11 +1,11 @@
 <div
-  class="w-full h-16 bg-green-400 bg-gradient-to-r from-green-400 to-purple-500 flex justify-between items-center px-16 static tracking-wider">
+  class="w-full h-16 bg-green-400 bg-gradient-to-r from-green-400 to-purple-500 flex justify-between items-center lg:px-16 md:px-8 px-2 static tracking-wider">
   <div class="">
-    <button class="font-bold text-white p-2 tracking-tight" (click)="logoutStudent()">
+    <button class="font-bold text-white px-2 tracking-tight" (click)="logoutStudent()">
       Salir de Cuenta
     </button>
     |
-    <button class="font-bold text-white p-2 tracking-tight" (click)="home()">
+    <button class="font-bold text-white px-2 tracking-tight" (click)="home()">
       Mis niveles
     </button>
   </div>
@@ -15,7 +15,6 @@
     <p class="mx-4">
       {{enrollment_code}}
     </p>
-
     <m-level color="white" [lvl]="lvl"></m-level>
   </div>
 

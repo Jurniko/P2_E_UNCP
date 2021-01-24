@@ -1,9 +1,9 @@
 <app-resultado *ngIf="openResult" (next)=" openResult = false ; textFinished = true ; questions = true"
   [ppmValue]="ppmValue$"></app-resultado>
-<div class="w-full h-screen ">
+<div class="w-full md:h-screen sm:h-full ">
 
   <div [class]="'flex-col justify-center items-center h-full w-full text-center '+randomBgProblem" *ngIf="!textFinished">
-    <div class="bg-white shadow-2xl h-full w-9/12 m-auto px-16 ">
+    <div class="bg-white shadow-2xl h-full lg:w-9/12 md:w-10/12 w-11/12 m-auto lg:px-16 md:px-8 px-2 ">
         <!-- textFinished -->
         <m-h type="p-1">TEXTO</m-h>
         <app-text (sucessfulRead)="succesfulRead($event)" (ppm)="ppmValue$ = $event" [text]="problem?.body!"
@@ -19,7 +19,7 @@
     <div class="static w-full top-0 bg-no-repeat z-0 bg-cover"
       [style]="randomBgQuestion"> <!-- LEFT SVG -->
 
-        <div class="bg-white w-7/12 m-auto shadow-2xl ">
+        <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl ">
           <m-h type="p-1">CUESTIONARIO</m-h>
           <form *ngIf="problem.questions" (ngSubmit)="onSubmit()" [formGroup]="form">
 
