@@ -3,8 +3,8 @@
   <div class="rounded-md shadow-xl  py-4 pl-6 border-2 border-green-400">
     <p class="font-bold tracking-tighter font-sans text-lg"> Velocidad de lectura :</p>
     <p class="font-normal pl-4"> {{blocks[0].ppm}} ppm </p>
-    <div class="text-center">
-      <p class="underline text-blue-800 cursor-pointer text-lg " (click)="this.stateKey_details.emit(blocks[0].state_key)"> Detalles </p>
+    <div class="cursor-pointer">
+      <p class="underline text-blue-800 text-lg " (click)="this.stateKey_details.emit(blocks[0].state_key)"> Detalles </p>
     </div>
     <div *ngFor="let block of blocks">
       <hr class="my-4 bg-black">

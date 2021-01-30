@@ -13,7 +13,7 @@
       <m-level [lvl]="1" rol="admin" (hidden)="hiddenLevel1=$event"></m-level>
       <br>
       <div class="flex flex-wrap" >
-        <div class="w-80" *ngFor="let nivel1 of result.level_1_keys" [hidden]="hiddenLevel1" >
+        <div class="w-80 my-2" *ngFor="let nivel1 of result.level_1_keys" [hidden]="hiddenLevel1" >
           <card [codeGroupBlock]="nivel1" [data]="result?.level_1!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <m-level [lvl]="2" rol="admin" (hidden)="hiddenLevel2=$event"></m-level>
       <br>
       <div class="flex flex-wrap">
-        <div class="w-80" *ngFor="let nivel2 of result.level_2_keys" [hidden]="hiddenLevel2">
+        <div class="w-80 my-2" *ngFor="let nivel2 of result.level_2_keys" [hidden]="hiddenLevel2">
           <card [codeGroupBlock]="nivel2" [data]="result?.level_2!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
@@ -31,7 +31,7 @@
       <m-level [lvl]="3" rol="admin" (hidden)="hiddenLevel3=$event"></m-level>
       <br>
       <div class="flex flex-wrap">
-        <div class="w-80" *ngFor="let nivel3 of result.level_3_keys" [hidden]="hiddenLevel3">
+        <div class="w-80 my-2" *ngFor="let nivel3 of result.level_3_keys" [hidden]="hiddenLevel3">
           <card [codeGroupBlock]="nivel3" [data]="result?.level_3!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
