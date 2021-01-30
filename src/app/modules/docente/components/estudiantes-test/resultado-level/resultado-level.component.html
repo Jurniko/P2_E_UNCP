@@ -1,3 +1,5 @@
+<app-modal-details *ngIf="openModalDetails" (close)="openModalDetails=false" [problem]="detailsProblem"></app-modal-details>
+
 <div class="w-full h-screen">
   <div class="bg-purple-50 h-16 px-8 flex justify-between items-center">
     <div>
@@ -12,7 +14,7 @@
       <br>
       <div class="flex flex-wrap" >
         <div class="w-80" *ngFor="let nivel1 of result.level_1_keys" [hidden]="hiddenLevel1" >
-          <card [codeGroupBlock]="nivel1" [data]="result?.level_1!"></card>
+          <card [codeGroupBlock]="nivel1" [data]="result?.level_1!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
     </div>
@@ -21,7 +23,7 @@
       <br>
       <div class="flex flex-wrap">
         <div class="w-80" *ngFor="let nivel2 of result.level_2_keys" [hidden]="hiddenLevel2">
-          <card [codeGroupBlock]="nivel2" [data]="result?.level_2!"></card>
+          <card [codeGroupBlock]="nivel2" [data]="result?.level_2!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
     </div>
@@ -30,7 +32,7 @@
       <br>
       <div class="flex flex-wrap">
         <div class="w-80" *ngFor="let nivel3 of result.level_3_keys" [hidden]="hiddenLevel3">
-          <card [codeGroupBlock]="nivel3" [data]="result?.level_3!"></card>
+          <card [codeGroupBlock]="nivel3" [data]="result?.level_3!" (stateKey_details)="details($event)"></card>
         </div>
       </div>
     </div>

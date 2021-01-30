@@ -19,9 +19,11 @@ import { EditComponent } from './components/salas/edit/edit.component';
 import { TokenInterceptor } from 'src/app/core/TokenInterceptor.interceptor';
 import { LoadingInterceptor } from 'src/app/core/Loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ModalDetailsComponent } from './components/estudiantes-test/modal-details/modal-details.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
-  declarations: [DocenteComponent, EstudiantesTestComponent, ResultadoLevelComponent, SalasComponent, ModalComponent, AddComponent,CardComponent, EditComponent],
+  declarations: [DocenteComponent, EstudiantesTestComponent, ResultadoLevelComponent, SalasComponent, ModalComponent, AddComponent,CardComponent, EditComponent, ModalDetailsComponent],
   imports: [
     CommonModule,
     DocenteRoutingModule,
@@ -32,7 +34,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     Ng2SearchPipeModule,
     OrderModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    YouTubePlayerModule,
   ]
   ,
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

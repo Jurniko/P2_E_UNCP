@@ -16,6 +16,8 @@ export class ResultadoLevelComponent implements OnInit {
   hiddenLevel2:boolean = false;
   hiddenLevel3:boolean = false;
 
+  openModalDetails:boolean = false;
+  detailsProblem :{problem:string,questions:{question:string,correct:boolean}[]}[]= [] as any;
   constructor(private route : Router, private docenteSevice:DocenteService, private rutaActiva:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -32,5 +34,11 @@ export class ResultadoLevelComponent implements OnInit {
     })
   }
 
+  details(stateKey:string){
+    this.docenteSevice.detailsBlockStudent(stateKey).subscribe((res:any)=>{
+      this.detailsProblem = res;
+      this.openModalDetails = true;
+    })
+  }
 
 }

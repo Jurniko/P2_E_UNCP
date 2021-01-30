@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BodyReportLevel } from 'src/app/interfaces/reports.inteface';
 
 @Component({
@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
 
   @Input() codeGroupBlock : string = '';
   @Input() data : any;
+  @Output() stateKey_details : EventEmitter<string> = new EventEmitter<string>()
   blocks : BodyReportLevel[] = [] as BodyReportLevel[];
 
   styles = {
@@ -40,4 +41,5 @@ export class CardComponent implements OnInit {
 
     return `${minutes} minutos y ${segundos} segundos`;
   }
+
 }

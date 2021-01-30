@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { YouTubePlayerModule } from '@angular/youtube-player';
+
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Problem } from 'src/app/interfaces/problem.interface';
 import { extractCorrectAternatives } from 'src/app/utils/extractCorrectAlternatives.utils';

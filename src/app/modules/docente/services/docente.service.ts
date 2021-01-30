@@ -39,4 +39,7 @@ export class DocenteService {
     return this.httpCliente.put<Room>(this.domain+this.path.teacher.roomUpdate,room)
   }
 
+  detailsBlockStudent(statekey:string){
+    return this.httpCliente.get(this.domain+this.path.teacher.problems+statekey)
+  }
 }

@@ -36,7 +36,8 @@ export const environment = {
         // ============ //
         room:"teacher/room/",
         roomPlural:"teacher/rooms/",
-        roomUpdate:"teacher/room/update/"
+        roomUpdate:"teacher/room/update/",
+        problems:"teacher/problems/"
       },
   }
 };

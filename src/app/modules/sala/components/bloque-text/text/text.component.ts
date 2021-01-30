@@ -31,7 +31,8 @@ export class TextComponent implements OnInit,OnChanges{
   ngOnChanges(changes:any){
     let changeText = changes['text'];
     this.text = changeText.currentValue;
-    this.textSacri= this.text;
+    this.textSacri= this.text.toLowerCase();
+    console.log(this.textSacri)
     this.textInner = this.addTagHTML(this.text);
     this.numberWords = this.text.split(' ').length;
   }
@@ -39,14 +40,15 @@ export class TextComponent implements OnInit,OnChanges{
   startSpeech() {
     this.readingTimeInSeconds = 0; // reiniciamos el tiempo de lectura
     this.indiceGuia=0;
-    this.textSacri = this.text;
+    this.textSacri = this.text.toLowerCase();
     this.textInner =  this.addTagHTML(this.text);
-    this.voiceService.start().subscribe(res=>{
+    this.voiceService.start().pipe(debounceTime(650)).subscribe(res=>{
+
       let a =  res.split(' ');
+
       let length = a.length;
 
-      let lasLetter = a[length-1].toLocaleLowerCase(); // obtenemos la ultima palabra hablada
-
+      let lasLetter = a[length-1].toLowerCase(); // obtenemos la ultima palabra hablada
 
       this.innerMarkProgress(lasLetter);
 
@@ -58,7 +60,7 @@ export class TextComponent implements OnInit,OnChanges{
   stopSpeech(){
     this.voiceService.stop();
 
-    if( this.textSacri.length < 100){ // Si solo quedan 50 letras por leer, se pueda usar el botón siguiente.
+    if( this.textSacri.length < 100){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
       this.sucessfulRead.emit(true);
       this.ppm.emit(this.PPM());
     }else{
@@ -78,8 +80,8 @@ export class TextComponent implements OnInit,OnChanges{
 * no redundar en palabras ya mencionadas.
 */
     this.indiceGuia +=  this.textSacri.search(search) + search.length; // Nos brinda el indice de la palabra antes.
-
-    this.textSacri = this.text.substring( this.indiceGuia,this.text.length+1); // LE DAMOS SU RESTO
+    console.log(this.indiceGuia)
+    this.textSacri = this.text.substring( this.indiceGuia,this.text.length+1).toLowerCase(); // LE DAMOS SU RESTO
 
     let textAntes = this.text.substring(0, this.indiceGuia);
     let textDespues = this.text.substring( this.indiceGuia,this.text.length+1);
@@ -99,8 +101,8 @@ export class TextComponent implements OnInit,OnChanges{
   }
 
   PPM() : number{
-    const minutes  = (this.readingTimeInSeconds / 60 ) % 60;
-    return +(this.numberWords/minutes).toFixed(2);
+
+    return +((this.numberWords/this.readingTimeInSeconds )*60).toFixed(2);
   }
 
 }

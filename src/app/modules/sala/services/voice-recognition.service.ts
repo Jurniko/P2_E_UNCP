@@ -31,8 +31,9 @@ export class VoiceRecognitionService {
         .map((result : any) => result[0])
         .map((result : any) => result.transcript)
         .join('');
-        //observer.next( transcript )
+        observer.next( transcript )
         this.tempWords = transcript;
+        console.log("captando xd :", transcript)
         });
 
       this.recognition.addEventListener('end', (condition:any) => {
@@ -42,7 +43,7 @@ export class VoiceRecognitionService {
           } else {
 
           this.wordConcat();
-          observer.next( this.text )
+          //observer.next( this.text )
 
           this.text = ""; //Para no sobrecargar
           this.recognition.start();
