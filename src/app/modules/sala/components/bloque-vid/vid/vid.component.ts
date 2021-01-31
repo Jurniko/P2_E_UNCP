@@ -9,6 +9,7 @@ export class VidComponent implements OnInit {
   @Output() finishVid : EventEmitter<boolean> =  new EventEmitter<boolean>();
   screenWidth:number = 0;
   screenHeight:number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +22,5 @@ export class VidComponent implements OnInit {
       this.finishVid.emit(true)
     }
   }
-
 
 }

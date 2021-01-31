@@ -33,7 +33,6 @@ export class VoiceRecognitionService {
         .join('');
         observer.next( transcript )
         this.tempWords = transcript;
-        console.log("captando xd :", transcript)
         });
 
       this.recognition.addEventListener('end', (condition:any) => {
@@ -52,7 +51,6 @@ export class VoiceRecognitionService {
     })
 
   }
-
 
   stop() {
     this.isStoppedSpeechRecog = true;

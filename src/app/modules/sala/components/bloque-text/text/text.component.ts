@@ -30,9 +30,8 @@ export class TextComponent implements OnInit,OnChanges{
 
   ngOnChanges(changes:any){
     let changeText = changes['text'];
-    this.text = changeText.currentValue;
+    this.text = changeText.currentValue//.replace(/<[^>]*>?/g, '');
     this.textSacri= this.text.toLowerCase();
-    console.log(this.textSacri)
     this.textInner = this.addTagHTML(this.text);
     this.numberWords = this.text.split(' ').length;
   }
@@ -49,7 +48,6 @@ export class TextComponent implements OnInit,OnChanges{
       let length = a.length;
 
       let lasLetter = a[length-1].toLowerCase(); // obtenemos la ultima palabra hablada
-
       this.innerMarkProgress(lasLetter);
 
     });
@@ -60,7 +58,7 @@ export class TextComponent implements OnInit,OnChanges{
   stopSpeech(){
     this.voiceService.stop();
 
-    if( this.textSacri.length < 100){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
+    if( this.textSacri.length < 10){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
       this.sucessfulRead.emit(true);
       this.ppm.emit(this.PPM());
     }else{
@@ -80,12 +78,24 @@ export class TextComponent implements OnInit,OnChanges{
 * no redundar en palabras ya mencionadas.
 */
     this.indiceGuia +=  this.textSacri.search(search) + search.length; // Nos brinda el indice de la palabra antes.
-    console.log(this.indiceGuia)
     this.textSacri = this.text.substring( this.indiceGuia,this.text.length+1).toLowerCase(); // LE DAMOS SU RESTO
 
-    let textAntes = this.text.substring(0, this.indiceGuia);
-    let textDespues = this.text.substring( this.indiceGuia,this.text.length+1);
-    this.textInner = '<mark>'+textAntes+'</mark>'+textDespues
+     let textAntes = this.text.substring(0, this.indiceGuia);
+     let textDespues = this.text.substring( this.indiceGuia,this.text.length+1);
+     this.textInner = '<mark>'+textAntes+'</mark>'+textDespues
+
+
+
+
+   }
+  searchingTagP(text:string, index:number){
+
+  }
+
+
+  PPM() : number{
+
+    return +((this.numberWords/this.readingTimeInSeconds )*60).toFixed(2);
   }
 
   startStopwatch(){
@@ -100,9 +110,5 @@ export class TextComponent implements OnInit,OnChanges{
     clearInterval(this.intervalFunction);
   }
 
-  PPM() : number{
-
-    return +((this.numberWords/this.readingTimeInSeconds )*60).toFixed(2);
-  }
 
 }

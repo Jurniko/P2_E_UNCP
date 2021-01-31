@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AttachSession } from 'protractor/built/driverProviders';
-import { map } from 'rxjs/operators';
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Problem } from 'src/app/interfaces/problem.interface';
 import { extractCorrectAternatives } from 'src/app/utils/extractCorrectAlternatives.utils';
@@ -83,7 +81,7 @@ export class BloqueTextComponent implements OnInit{
     logs.problem_id = this.problem.id ;
 
     this.finishedTextData.emit(logs)
-    
+
   }
 
 

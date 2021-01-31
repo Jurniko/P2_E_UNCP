@@ -27,7 +27,6 @@ export class EditComponent implements OnInit {
       this.init$();
     })
     this.url = location.origin+"/"
-    console.log(location)
     this.form = this.formBuilder.group({
       description:['',Validators.required],
       enrollment_codes:['',Validators.required]
