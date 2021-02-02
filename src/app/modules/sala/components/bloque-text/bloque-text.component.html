@@ -1,41 +1,102 @@
-<app-resultado *ngIf="openResult" (next)=" openResult = false ; textFinished = true ; questions = true"
-  [ppmValue]="ppmValue$"></app-resultado>
-<div class="w-full md:h-screen sm:h-full ">
-
-  <div [class]="'flex-col justify-center items-center h-full w-full text-center '+randomBgProblem" *ngIf="!textFinished">
-    <div class="bg-white shadow-2xl h-full lg:w-9/12 md:w-10/12 w-11/12 m-auto lg:px-16 md:px-8 px-2 ">
-        <!-- textFinished -->
-        <m-h type="p-1">TEXTO</m-h>
-        <app-text (sucessfulRead)="succesfulRead($event)" (ppm)="ppmValue$ = $event" [text]="problem?.body!"
-          *ngIf="problem"></app-text> <!-- *ngIf para que los valores ingresen una vez recogidas -->
-        <m-button (click)="openResult = true " [disabled]="!succesfulRead$"> Siguiente </m-button>
+<app-resultado
+  *ngIf="openResult"
+  (next)="openResult = false; textFinished = true; questions = true"
+  [ppmValue]="ppmValue$"
+></app-resultado>
+<div class="w-full md:h-screen sm:h-full">
+  <div
+    [class]="
+      'flex-col justify-center items-center h-full w-full text-center ' +
+      randomBgProblem
+    "
+    *ngIf="!textFinished"
+  >
+    <div
+      class="bg-white shadow-2xl h-full lg:w-9/12 md:w-10/12 w-11/12 m-auto lg:px-16 md:px-8 px-2"
+    >
+      <!-- textFinished -->
+      <m-h type="p-1">TEXTO</m-h>
+      <app-text
+        (sucessfulRead)="succesfulRead($event)"
+        (ppm)="ppmValue$ = $event"
+        [text]="problem?.body!"
+        *ngIf="problem"
+      ></app-text>
+      <!-- *ngIf para que los valores ingresen una vez recogidas -->
+      <m-button (click)="openResult = true" [disabled]="!succesfulRead$">
+        Siguiente
+      </m-button>
     </div>
-
-
   </div>
 
-  <div class="flex-col justify-center items-center h-full w-full text-center" *ngIf="questions">
+  <div
+    class="flex-col justify-center items-center h-full w-full text-center"
+    *ngIf="questions"
+  >
     <!-- questions -->
-    <div class="static w-full top-0 bg-no-repeat z-0 bg-cover"
-      [style]="randomBgQuestion"> <!-- LEFT SVG -->
+    <div
+      class="static w-full top-0 bg-no-repeat z-0 bg-cover"
+      [style]="randomBgQuestion"
+    >
+      <!-- LEFT SVG -->
 
-        <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl ">
-          <m-h type="p-1">CUESTIONARIO</m-h>
-          <form *ngIf="problem.questions" (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl">
+        <m-h type="p-1">CUESTIONARIO</m-h>
+        <form
+          *ngIf="problem.questions"
+          (ngSubmit)="apreciation = true; questions = false"
+          [formGroup]="form"
+        >
+          <questions-lvl
+            *ngFor="let question of problem.questions; let iQuestion = index"
+            [text]="question.question!"
+          >
+            <m-f-radio
+              [nameGroupInput]="question.id"
+              *ngFor="let a of question.alternatives!; let i = index"
+              [label]="a.alternative!"
+              [formGroup]="form!"
+              [controlName]="'question' + (iQuestion + 1)!.toString()"
+              [value]="a.id"
+            ></m-f-radio>
+          </questions-lvl>
 
-            <questions-lvl *ngFor="let question of problem.questions ;let iQuestion = index " [text]="question.question!">
-              <m-f-radio [nameGroupInput]="question.id" *ngFor="let a of question.alternatives!;let i = index"
-                [label]="a.alternative!" [formGroup]="form!" [controlName]="'question'+ (iQuestion+1)!.toString()"
-                [value]="a.id"></m-f-radio>
-            </questions-lvl>
-
-            <m-button [submit]="true" [disabled]="form.invalid"> Siguiente </m-button>
-
-          </form>
-        </div>
+          <m-button [submit]="true" [disabled]="form.invalid">
+            Siguiente
+          </m-button>
+        </form>
       </div>
-
+    </div>
   </div>
+  <div
+    class="flex-col justify-center items-center h-screen w-full text-center"
+    *ngIf="apreciation"
+  >
+    <div
+      class="static w-full h-screen top-0 bg-no-repeat z-0 bg-cover"
+      style="background-image: url('assets/sala/appreciation/bg-1.svg')"
+    >
 
+      <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl lg:px-16 md:px-8 sm:px-4 px-2 ">
+      <m-h type="p-1" >APRECIACIÓN</m-h>
+        <form
+          (ngSubmit)="onSubmit()"
+          [formGroup]="form"
+          class="py-16"
+        >
+          <m-f-textarea
+            label="Apreciación de la lectura"
+            [formGroup]="form"
+            controlName="appreciation"
+            placeholer="..."
+          >
+          </m-f-textarea>
 
+          <m-button [submit]="true" [disabled]="form.invalid">
+            Siguiente
+          </m-button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

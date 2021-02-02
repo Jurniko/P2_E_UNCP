@@ -18,6 +18,8 @@ export interface Logs{
 
   block_id?:number
 
+  appreciation?:string
+
   problem_id?:number
   problem?:Problem
 

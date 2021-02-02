@@ -16,6 +16,8 @@ export class BloqueTextComponent implements OnInit{
   openResult:boolean = false ;
   textFinished:boolean = false;
 
+  apreciation:boolean = false;
+
   questions :boolean = false ;
   isListening : boolean = false ;
 
@@ -45,6 +47,7 @@ export class BloqueTextComponent implements OnInit{
       question2:[,Validators.required],
       question3:[,Validators.required],
       question4:[,Validators.required],
+      appreciation:[]
     })
     this.startRecordingTime();
 
@@ -69,7 +72,9 @@ export class BloqueTextComponent implements OnInit{
   succesfulRead(status:boolean ) {
     this.succesfulRead$ = status;
   }
+
   onSubmit(){
+
     let logs : Logs = {} as Logs;
     this.stopRecordingTime();
     logs.correct_questions_id = extractCorrectAternatives(this.problem.questions, this.form.value);
@@ -79,7 +84,7 @@ export class BloqueTextComponent implements OnInit{
     logs.block_id = this.block ;
     logs.level_id = this.level ;
     logs.problem_id = this.problem.id ;
-
+    logs.appreciation = this.form.get('appreciation')?.value
     this.finishedTextData.emit(logs)
 
   }

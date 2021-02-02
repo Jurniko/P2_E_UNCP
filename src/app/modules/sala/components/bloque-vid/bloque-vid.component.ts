@@ -17,6 +17,7 @@ export class BloqueVidComponent implements OnInit {
   finishedVid : boolean = false
   problem : Problem = {} as Problem;
   questions:boolean = false ;
+  apreciation : boolean = false;
 
   form : FormGroup = new FormGroup({});
 
@@ -47,7 +48,8 @@ export class BloqueVidComponent implements OnInit {
         this.form = this.formBuilder.group({
           question1:[,Validators.required],
           question2:[,Validators.required],
-          question3:[,Validators.required]
+          question3:[,Validators.required],
+          appreciation:[]
         })
       }else{
         this.form = this.formBuilder.group({
@@ -55,6 +57,7 @@ export class BloqueVidComponent implements OnInit {
           question2:[,Validators.required],
           question3:[,Validators.required],
           question4:[,Validators.required],
+          appreciation:[]
         })
       }
     })
@@ -81,7 +84,7 @@ export class BloqueVidComponent implements OnInit {
     logs.correct_questions_id = extractCorrectAternatives(this.problem.questions,this.form.value)
     logs.duration = this.timeInSeconds
     logs.problem_id = this.problem.id ;
-
+    logs.appreciation = this.form.get('appreciation')?.value;
     this.finishedVidData.emit(logs);
   }
 
