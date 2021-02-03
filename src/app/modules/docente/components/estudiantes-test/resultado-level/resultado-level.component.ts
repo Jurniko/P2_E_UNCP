@@ -17,7 +17,7 @@ export class ResultadoLevelComponent implements OnInit {
   hiddenLevel3:boolean = false;
 
   openModalDetails:boolean = false;
-  detailsProblem :{problem:string,questions:{question:string,correct:boolean}[]}[]= [] as any;
+  detailsProblem :{problem:string,appreciation:string,questions:{question:string,correct:boolean}[]}[]= [] as any;
   constructor(private route : Router, private docenteSevice:DocenteService, private rutaActiva:ActivatedRoute) { }
 
   ngOnInit(): void {
