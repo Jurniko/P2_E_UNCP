@@ -1,3 +1,6 @@
+<modal-chart [idData]="idDataChart" pathName="group" *ngIf="openChart" (back)="openChart = false"></modal-chart>
+
+
 <div class="w-full h-screen px-16">
   <div class="m-auto">
     <m-h type="p-1">SALAS CREADAS</m-h>
@@ -27,7 +30,10 @@
         <td>{{room?.total_students}}</td>
         <td>{{room?.registered_students}}</td>
         <td>
-          <m-button type="add" (click)="checkingRoom(room.id!)"> Revisar </m-button>
+          <m-button type="add" addClass="mx-2" (click)="checkingRoom(room.id!)"> Revisar </m-button>
+          <m-button type="add" addClass="mx-2" (click)="openAnalysis(room.id!)"> Análisis </m-button>
+          <m-button type="add" addClass="mx-2" (click)="downloadExcel(room.id!)"> Excel </m-button>
+
         </td>
       </tr>
     </tbody>

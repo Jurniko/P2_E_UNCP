@@ -8,7 +8,7 @@ import { VoiceRecognitionService } from '../../../services/voice-recognition.ser
 })
 export class TextComponent implements OnInit,OnChanges{
   @Input() text:string = `...`;
-
+  @Input() requiredReset: boolean = false;
   isListening : boolean = false;
   textInner:string = '';
   textSacri:string = this.text;
@@ -26,6 +26,7 @@ export class TextComponent implements OnInit,OnChanges{
 
   ngOnInit(): void {
     this.voiceService.init();
+    if(this.requiredReset){ this.reset(); }
   }
 
   ngOnChanges(changes:any){
@@ -36,11 +37,10 @@ export class TextComponent implements OnInit,OnChanges{
     this.numberWords = this.text.split(' ').length;
   }
 
+
+
   startSpeech() {
-    this.readingTimeInSeconds = 0; // reiniciamos el tiempo de lectura
-    this.indiceGuia=0;
-    this.textSacri = this.text.toLowerCase();
-    this.textInner =  this.addTagHTML(this.text);
+    this.reset();
     this.voiceService.start().pipe(debounceTime(650)).subscribe(res=>{
 
       let a =  res.split(' ');
@@ -54,11 +54,16 @@ export class TextComponent implements OnInit,OnChanges{
 
     this.startStopwatch()
   }
-
+  reset(){
+    this.readingTimeInSeconds = 0; // reiniciamos el tiempo de lectura
+    this.indiceGuia=0;
+    this.textSacri = this.text.toLowerCase();
+    this.textInner =  this.addTagHTML(this.text);
+  }
   stopSpeech(){
     this.voiceService.stop();
 
-    if( this.textSacri.length < 10){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
+    if( this.textSacri.length < 100){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
       this.sucessfulRead.emit(true);
       this.ppm.emit(this.PPM());
     }else{

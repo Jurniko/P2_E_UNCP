@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BodyReportLevel } from 'src/app/interfaces/reports.inteface';
+import { Attempts ,  } from 'src/app/interfaces/attempts.interface';
+import { Logs } from 'src/app/interfaces/logs.interface';
+import { BodyReportLevel, Report,AttemptReport } from 'src/app/interfaces/reports.inteface';
 
 @Component({
   selector: 'card',
@@ -7,10 +9,10 @@ import { BodyReportLevel } from 'src/app/interfaces/reports.inteface';
 })
 export class CardComponent implements OnInit {
 
-  @Input() codeGroupBlock : string = '';
-  @Input() data : any;
+  @Input() data : any =[] as any;
+  @Input() level : string = '1';
   @Output() stateKey_details : EventEmitter<string> = new EventEmitter<string>()
-  blocks : BodyReportLevel[] = [] as BodyReportLevel[];
+  blocks : BodyReportLevel [] = [] as BodyReportLevel[];
 
   styles = {
     svgGood:"assets/estudiante/buena.svg",
@@ -21,7 +23,9 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.blocks = this.data[this.codeGroupBlock]
+    console.log("DATA", this.data)
+    this.blocks = this.data["level_"+this.level]!;
+    this.blocks[0]
   }
 
   isCorrect(block:BodyReportLevel,idQuestion:number){
@@ -41,5 +45,4 @@ export class CardComponent implements OnInit {
 
     return `${minutes} minutos y ${segundos} segundos`;
   }
-
-}
+ }

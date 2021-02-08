@@ -1,32 +1,53 @@
-<m-navbar-lvl [lvl]="0" [enrollment_code]="studentData.enrollment_code!"></m-navbar-lvl>
-<div style="background-image: url('assets/shared/landscape-lvl.svg')"
-  class="static w-full h-ull top-0 bg-no-repeat z-0 bg-left-bottom bg-cover">
+<m-navbar-lvl
+  [lvl]="0"
+  [enrollment_code]="studentData.enrollment_code!"
+></m-navbar-lvl>
+<div
+  style="background-image: url('assets/shared/landscape-lvl.svg')"
+  class="static w-full h-ull top-0 bg-no-repeat z-0 bg-left-bottom bg-cover"
+>
   <div class="w-full h-screen">
+    <div class="absolute flex flex-wrap justify-center items-center">
+      <start-lvl [score]="+attempt?.xp!"*ngFor="let attempt of studentData.attempts "></start-lvl>
+
+    </div>
     <div class="flex justify-center items-center h-full">
       <div class="lg:w-6/12 md:w-8/12 w-11/12 m-auto">
-        <button
-          [class]="maxLevel>=0? styleEnabled.css : styleDisabled.css "
-          [disabled]="maxLevel>=0? false:true"
-          (click)="goLevel(1)">
-          Nivel 1 : <span class="font-light text-left"> Pruebas Básicas</span>
-          <img [src]="maxLevel>=0? styleEnabled.svg : styleDisabled.svg"/>
-        </button>
-
-        <button
-          [class]="maxLevel>=1? styleEnabled.css : styleDisabled.css "
-          [disabled]="maxLevel>=1? false:true"
-          (click)="goLevel(2)">
-          Nivel 2 :  <span class="font-light text-left"> Pruebas Intermedias</span>
-          <img [src]="maxLevel>=1? styleEnabled.svg : styleDisabled.svg"/>
-        </button>
-
-        <button
-        [class]="maxLevel>=2? styleEnabled.css : styleDisabled.css "
-        [disabled]="maxLevel>=2? false:true"
-        (click)="goLevel(3)">
-          Nivel 3 : <span class="font-light text-left"> Pruebas Avanzadas</span>
-          <img [src]="maxLevel>=2? styleEnabled.svg : styleDisabled.svg"/>
-        </button>
+        <div class="flex justify-center items-center">
+          <start-lvl [score]="pointsInit?.xp1!"></start-lvl>
+          <button
+            [class]="maxLevel == 1 ? styleEnabled.css : styleDisabled.css"
+            [disabled]="maxLevel == 1 ? false : true"
+            (click)="goLevel(1)"
+          >
+            Nivel 1 : <span class="font-light text-left"> Pruebas Básicas</span>
+            <img [src]="maxLevel == 1 ? styleEnabled.svg : styleDisabled.svg" />
+          </button>
+        </div>
+        <div class="flex justify-center items-center">
+          <start-lvl [score]="pointsInit?.xp2!"></start-lvl>
+          <button
+            [class]="maxLevel == 2 ? styleEnabled.css : styleDisabled.css"
+            [disabled]="maxLevel == 2 ? false : true"
+            (click)="goLevel(2)"
+          >
+            Nivel 2 :
+            <span class="font-light text-left"> Pruebas Intermedias</span>
+            <img [src]="maxLevel == 2 ? styleEnabled.svg : styleDisabled.svg" />
+          </button>
+        </div>
+        <div class="flex justify-center items-center">
+          <start-lvl [score]="pointsInit?.xp3!"></start-lvl>
+          <button
+            [class]="maxLevel == 3 ? styleEnabled.css : styleDisabled.css"
+            [disabled]="maxLevel == 3 ? false : true"
+            (click)="goLevel(3)"
+          >
+            Nivel 3 :
+            <span class="font-light text-left"> Pruebas Avanzadas</span>
+            <img [src]="maxLevel == 3 ? styleEnabled.svg : styleDisabled.svg" />
+          </button>
+        </div>
       </div>
     </div>
   </div>

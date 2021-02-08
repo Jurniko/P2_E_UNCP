@@ -1,6 +1,6 @@
 export const environment = {
-  production: true,
-  domain:"https://cunasoft.com/APIS/quizzapp/api/v1/",
+  production: false,
+  domain:"http://127.0.0.1:8000/api/v1/",
   path:{
 
       student:{
@@ -32,9 +32,13 @@ export const environment = {
         // ============ //
         room:"teacher/room/",
         roomPlural:"teacher/rooms/",
-        roomUpdate:"teacher/room/update/"
+        roomUpdate:"teacher/room/update/",
+        problems:"teacher/problems/",
+        chartIndividual:"teacher/ichart/",
+        chartGroup:"teacher/gchart/",
+        chartGroupExcel:"teacher/gchartexcel/",
+        studentsExcel:"teacher/student/excel"
+
       },
-
-
   }
 };

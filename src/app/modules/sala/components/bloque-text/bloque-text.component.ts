@@ -1,17 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Problem } from 'src/app/interfaces/problem.interface';
 import { extractCorrectAternatives } from 'src/app/utils/extractCorrectAlternatives.utils';
 import { randomProblemBg } from 'src/app/utils/radomProblemBg.utils';
 import { randomQuestionBg } from 'src/app/utils/randomQuestionBg.utils';
+import { removeStorageResult } from 'src/app/utils/storageResult.utils';
 import { SalaService } from '../../services/sala.service';
 
 @Component({
   selector: 'bloque-text',
   templateUrl: './bloque-text.component.html'
 })
-export class BloqueTextComponent implements OnInit{
+export class BloqueTextComponent implements OnInit,OnDestroy{
 
   openResult:boolean = false ;
   textFinished:boolean = false;
@@ -52,9 +53,18 @@ export class BloqueTextComponent implements OnInit{
     this.startRecordingTime();
 
   }
+  ngOnDestroy(){
+   console.log("TEMINAMOS EL BLOQUE 1")
+    removeStorageResult();
+  }
 
   init$(){
     this.salaService.getProblem$(this.level,this.block).subscribe(res=>this.problem = res[0])
+  }
+
+  usingAttempt(){
+    this.textFinished = false;
+    this.openResult = false;
   }
 
   startRecordingTime(){
@@ -73,6 +83,11 @@ export class BloqueTextComponent implements OnInit{
     this.succesfulRead$ = status;
   }
 
+  extraPoints(points:number){
+    this.form.addControl('ppm_points',new FormControl(points))
+    console.log(this.form.get('ppm_points')?.value)
+  }
+
   onSubmit(){
 
     let logs : Logs = {} as Logs;
@@ -85,6 +100,7 @@ export class BloqueTextComponent implements OnInit{
     logs.level_id = this.level ;
     logs.problem_id = this.problem.id ;
     logs.appreciation = this.form.get('appreciation')?.value
+    logs.ppm_points = this.form.get('ppm_points')?.value
     this.finishedTextData.emit(logs)
 
   }

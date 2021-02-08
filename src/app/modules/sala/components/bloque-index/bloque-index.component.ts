@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Student } from 'src/app/interfaces/student.interface';
@@ -27,7 +27,7 @@ export class BloqueIndexComponent implements OnInit {
   constructor(private salaService:SalaService, private rutaActiva:ActivatedRoute, private _location:Location,private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe(param=>this.level=param.lvl)
+    this.getLvlOfRoute();
     this.init$();
   }
 
@@ -60,14 +60,17 @@ export class BloqueIndexComponent implements OnInit {
       this.studentData = res;
     })
   }
+
   getLvlOfRoute(){
+
     this.rutaActiva.params.subscribe(param=>{
-      this.level = param.lvl
+      this.level = +param.lvl;
     })
   }
 
   blockTextData(logs:Logs){
     this.salaService.postSaveLogForBlock(logs).subscribe((res:Logs)=>{
+      console.log("blockTExt ",res)
         this.stateKeyGenerated = res.state_key;
     })
   }

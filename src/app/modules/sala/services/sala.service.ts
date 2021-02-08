@@ -23,7 +23,6 @@ export class SalaService {
 
   //TOKEN
   postLevelsStudents$(){
-    //RETORNA null
     return this.http.get(this.domain+this.path.student.max_level);
   }
   //TOKEN

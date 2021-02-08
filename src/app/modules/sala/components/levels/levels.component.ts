@@ -12,15 +12,15 @@ import { SalaService } from '../../services/sala.service';
 export class LevelsComponent implements OnInit {
 
   maxLevel :number = 0 ;
-
+  pointsInit = {xp1:0, xp2:0, xp3:0}
   studentData:Student = {} as Student;
 
   styleEnabled ={
-    css: "rounded bg-green-400 hover:bg-green-300 py-4 lg:px-8 md:px-6 px-4 text-white text-xl font-semibold tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
+    css: "rounded bg-green-400 hover:bg-green-300 lg:py-4 md:py-2 py-1 lg:px-8 md:px-6 px-4 text-white lg:text-xl md:text-lg text-md font-semibold tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
     svg: "assets/sala/unlocked.svg"
   }
   styleDisabled={
-    css: "rounded bg-green-600                    py-4 lg:px-8 md:px-6 px-4 text-white text-xl font-semibold  tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
+    css: "rounded bg-green-600                    lg:py-4 md:py-2 py-1 lg:px-8 md:px-6 px-4 text-white lg:text-xl md:text-lg text-md font-semibold  tracking-wider flex justify-between items-center w-full shadow-xl lg:my-4 md:my-2 my-1",
     svg: "assets/sala/locked.svg"
   }
 
@@ -32,14 +32,16 @@ export class LevelsComponent implements OnInit {
 
   init$(){
     this.salaService.postLevelsStudents$().subscribe((res:any)=>{
+      console.log(res)
       if(!res){
         this.maxLevel = 0;
       }else{
-        this.maxLevel = res
+        this.maxLevel = res.max_level
+        this.pointsInit = res
       }
     })
 
-    this.authService.studentInfo().subscribe(res=>this.studentData = res)
+    this.authService.studentInfo().subscribe(res=>{this.studentData = res,console.log(res)})
   }
 
   goLevel(level:number){

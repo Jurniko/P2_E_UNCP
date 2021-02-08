@@ -9,10 +9,15 @@ export class MButtonComponent implements OnInit {
   @Input() submit : boolean = false;
   class:string = "";
   @Input() disabled : boolean = false ;
+  @Input() addClass : string = ""
 
   constructor() { }
 
-  ngOnInit(): void {this.class = this.generateColor(this.type);}
+  ngOnInit(): void {
+    this.class = this.generateColor(this.type);
+    this.class += " "+this.addClass
+
+  }
 
 
   generateColor(type:string = "normal") : string{

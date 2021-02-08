@@ -1,10 +1,7 @@
 <div class="flex items-center">
-
-  <img src="assets/shared/badge-lvl.svg" class="w-12" alt="Insignia">
-  <p [class]="classP" *ngIf="lvl!=0">
-    Nivel {{lvl}}
-  </p>
-
+  <img src="assets/shared/badge-lvl.svg" class="w-12" alt="Insignia" />
+  <p [class]="classP" *ngIf="lvl != 0">Nivel {{ lvl }}</p>
+  <!--
   <div *ngIf="isAdmin == true" class="mx-8">
     <button class="flex py-1 px-2 items-center focus:outline-none " (click)=" isHidden = !isHidden ; hidden.emit(isHidden)">
       <img src="assets/shared/hidden-f.svg" class="w-8" alt="Ocultar"
@@ -16,6 +13,4 @@
       <p class="ml-4" *ngIf="isHidden ==  true "> Desocultar</p>
     </button>
   </div>
-
-
-</div>
+--></div>

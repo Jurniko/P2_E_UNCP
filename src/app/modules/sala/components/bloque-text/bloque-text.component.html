@@ -2,6 +2,9 @@
   *ngIf="openResult"
   (next)="openResult = false; textFinished = true; questions = true"
   [ppmValue]="ppmValue$"
+  [text]="problem?.body!"
+  (attemptClick)="usingAttempt()"
+  (extraPoints)="extraPoints($event)"
 ></app-resultado>
 <div class="w-full md:h-screen sm:h-full">
   <div
@@ -76,14 +79,11 @@
       class="static w-full h-screen top-0 bg-no-repeat z-0 bg-cover"
       style="background-image: url('assets/sala/appreciation/bg-1.svg')"
     >
-
-      <div class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl lg:px-16 md:px-8 sm:px-4 px-2 ">
-      <m-h type="p-1" >APRECIACIÓN</m-h>
-        <form
-          (ngSubmit)="onSubmit()"
-          [formGroup]="form"
-          class="py-16"
-        >
+      <div
+        class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl lg:px-16 md:px-8 sm:px-4 px-2"
+      >
+        <m-h type="p-1">APRECIACIÓN</m-h>
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" class="py-16">
           <m-f-textarea
             label="Apreciación de la lectura"
             [formGroup]="form"

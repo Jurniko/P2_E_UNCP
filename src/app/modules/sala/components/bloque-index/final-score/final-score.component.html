@@ -5,24 +5,30 @@
     </div>
 
     <div class="flex flex-wrap justify-center items-center">
-      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8 ">
+      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8">
         <p class="font-bold text-4xl text-center py-4">BLOQUE 1</p>
         <div class="text-center text-3xl font-semibold my-2">
-          Nota : <span class="font-medium text-2xl"> {{block_1}} </span>
+          Acumulado :
+          <span class="font-medium text-2xl m-auto">
+            <start-lvl [score]="block_1!" [color]="'black'"></start-lvl
+          ></span>
         </div>
       </div>
-      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8 ">
+      <div class="rounded-lg shadow-xl bg-white h-auto w-5/12 m-auto my-8">
         <p class="font-bold text-4xl text-center py-4">BLOQUE 2</p>
         <div class="text-center text-3xl font-semibold my-2">
-          Nota : <span class="font-medium text-2xl"> {{block_2}} </span>
+          Acumulado :
+          <span class="font-medium text-2xl m-auto">
+            <start-lvl [score]="block_2!" [color]="'black'"></start-lvl
+          ></span>
         </div>
       </div>
-      <div class="rounded-lg shadow-xl bg-white h-auto w-full m-auto my-8 ">
+      <!--  <div class="rounded-lg shadow-xl bg-white h-auto w-full m-auto my-8 ">
         <p class="font-bold text-4xl text-center py-4">PROMEDIO</p>
         <div class="text-center text-3xl font-semibold my-2">
           Nota : <span class="font-medium text-2xl"> {{average}} </span>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="text-center">
       <m-button (click)="finished.emit(true)"> Terminar </m-button>

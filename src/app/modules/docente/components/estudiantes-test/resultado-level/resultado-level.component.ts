@@ -15,9 +15,13 @@ export class ResultadoLevelComponent implements OnInit {
   hiddenLevel1:boolean = false;
   hiddenLevel2:boolean = false;
   hiddenLevel3:boolean = false;
-
+  hiddenForAttempt : boolean[] = [false];
   openModalDetails:boolean = false;
   detailsProblem :{problem:string,appreciation:string,questions:{question:string,correct:boolean}[]}[]= [] as any;
+
+
+  idDataChart = {student_id : 0, attempt_id:0}
+  openChart : boolean = false
   constructor(private route : Router, private docenteSevice:DocenteService, private rutaActiva:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -25,15 +29,24 @@ export class ResultadoLevelComponent implements OnInit {
       this.studentId = param.id
       this.init$();
     })
-
   }
 
   init$(){
     this.docenteSevice.getStudentsById(this.studentId).subscribe((res:any)=>{
       this.result = res
+      console.log(res)
+      this.hiddenForAttempt = this.generateIdHiddenForAttempt(this.result.attempts.length);
+      console.log(this.hiddenForAttempt)
     })
   }
 
+  generateIdHiddenForAttempt(length:number) : boolean[]{
+    let levelVar :boolean[] = [] as boolean[];
+    for(let i = 0 ; i<length ; i++){
+      levelVar.push(false)
+    }
+    return levelVar;
+  }
   details(stateKey:string){
     this.docenteSevice.detailsBlockStudent(stateKey).subscribe((res:any)=>{
       this.detailsProblem = res;
@@ -41,4 +54,16 @@ export class ResultadoLevelComponent implements OnInit {
     })
   }
 
+  isEmpty(attemp:any, level : string){
+    if(attemp["level_"+level].length == 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  generateChart(student_id:number,attempt_id:number){
+    this.idDataChart.student_id = student_id;
+    this.idDataChart.attempt_id = attempt_id;
+    this.openChart = true;
+  }
 }

@@ -16,14 +16,12 @@ export class LimitLevelGuard implements CanActivate {
 
       if(routeInserted <= 3){
         return this.salaService.postLevelsStudents$().pipe(map((e:any)=>{
-
-          if( !e && routeInserted == 1 ){
-              return true
-          }else if(routeInserted <= (e+1)){ // e+1 => si hice el nivel 1, me devolvera 1, pero eso limita a que pueda hacer el dos
-              return true
-          }else{
-            this.route.navigate([`/sala/${route.params.codigo}/lvl`])
+          console.log("GUARD , level  ",e)
+          if( e.max_level != routeInserted ){
+             this.route.navigate([`/sala/${route.params.codigo}/lvl`])
             return false
+          }else{
+             return true
           }
         }))
       }

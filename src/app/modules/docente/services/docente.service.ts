@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Room } from 'src/app/interfaces/room.interface';
@@ -41,5 +41,21 @@ export class DocenteService {
 
   detailsBlockStudent(statekey:string){
     return this.httpCliente.get(this.domain+this.path.teacher.problems+statekey)
+  }
+
+  chartIndividualStudent(student_id : string,attempt:string){
+    return this.httpCliente.get(this.domain+this.path.teacher.chartIndividual+`${student_id}/${attempt}`)
+  }
+
+  chartGroupStudent(code_id:string){
+    return this.httpCliente.get(this.domain+this.path.teacher.chartGroup+`${code_id}`)
+  }
+
+  downloadGroupExcelStudent(code_id:string){
+    return this.httpCliente.get(this.domain+this.path.teacher.chartGroupExcel+`${code_id}`,{responseType:'blob'})
+  }
+
+  downloadStudentsExcel(){
+    return this.httpCliente.get(this.domain+this.path.teacher.studentsExcel,{responseType:'blob'})
   }
 }

@@ -1,17 +1,21 @@
+import { Attempts } from "./attempts.interface";
 import { Logs } from "./logs.interface";
 import { Student } from "./student.interface";
 
 export interface Report{
   student:Student
+  attempts:AttemptReport[]
+  }
 
-  level_1_keys:string[]
-  level_1:{}
+export interface AttemptReport extends Attempts{
+  level_1:BodyReportLevel[]
 
-  level_2_keys:string[]
-  level_2:{}
+  level_2:BodyReportLevel[]
 
-  level_3_keys:string[]
-  level_3:{}
+
+  level_3:BodyReportLevel[]
+
+
 }
 
 export interface BodyReportLevel extends Logs{

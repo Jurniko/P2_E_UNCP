@@ -37,7 +37,13 @@ export const environment = {
         room:"teacher/room/",
         roomPlural:"teacher/rooms/",
         roomUpdate:"teacher/room/update/",
-        problems:"teacher/problems/"
+        problems:"teacher/problems/",
+        chartIndividual:"teacher/ichart/",
+        chartGroup:"teacher/gchart/",
+        chartGroupExcel:"teacher/gchartexcel/",
+
+        studentsExcel:"teacher/studentexcel"
+
       },
   }
 };

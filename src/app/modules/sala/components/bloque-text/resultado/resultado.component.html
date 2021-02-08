@@ -1,19 +1,63 @@
 <div class="w-screen h-screen bg-gray-800 top-0 fixed m-auto">
-  <div style="background-image:url('../../../../../../assets/estudiante/celebration.svg');" class="static top-0 w-screen h-screen bg-no-repeat z-0 bg-cover bg-left-top">
-  <div class="lg:w-8/12 md:w-9/12 w-11/12 h-screen m-auto z-25">
-    <div class="flex flex-col md:flex-row justify-center items-center h-full py-16">
+  <div
+    style="
+      background-image: url('../../../../../../assets/estudiante/celebration.svg');
+    "
+    class="static top-0 w-screen h-screen bg-no-repeat z-0 bg-cover bg-left-top"
+  >
+    <div class="lg:w-8/12 md:w-9/12 w-11/12 h-screen m-auto z-25">
+      <div
+        class="flex flex-col md:flex-row justify-center items-center h-full py-16"
+      >
+        <img src="assets/sala/celebration.svg" *ngIf="!readAgain" />
+        <div class="text-center mx-8">
+          <h2 class="text-white font-semibold text-2xl">
+            Tu velocidad de lectura es:
+            <span class="font-bold"> {{ result.nivel }}</span>
+          </h2>
+          <h3 class="text-white font-extrabold text-4xl my-4">
+            {{ ppmValue }} ppm + {{result.points}} XP
+          </h3>
+          <br/>
+          <!-- <p class="text-white text-2xl" *ngIf="!readAgain">{{ result.message }}</p>-->
+          <div>
+            <p
+              class="text-white text-xl flex-col justify-center items-center py-4"
+              *ngIf="result.attempt!=0"
+            >
+              ¿Quieres volver a leer la lectura para mejorar tu velocidad de
+              lectura y obtener puntos adicionales? <br />
+              <m-button (click)="usingAttempt()" type="add">
+                Presione Aquí
+              </m-button>
+            </p>
+            <p
+              class="text-white text-xl flex-col justify-center items-center py-4"
+              *ngIf="!readAgain"
+            >
+              Si deseas puedes volver a leer el texto sin control de voz <br />
+              <m-button (click)="readAgain = true" type="add">
+                Ver Texto
+              </m-button>
+            </p>
 
-      <img src="assets/sala/celebration.svg" alt="">
-      <div class="text-center mx-8">
-        <h2 class="text-white font-semibold text-2xl "> Tu velocidad de lectura es: <span class="font-bold"> {{result.nivel}}</span> </h2>
-        <h3 class="text-white font-extrabold text-4xl my-4 "> {{ppmValue}} ppm</h3>
-        <p class="text-white text-2xl "> {{result.message}}</p>
-      </div>
-      <div class="no-flex justify-center">
-        <m-button (click)="next.emit(true)"> Siguiente </m-button>
+            <div
+              *ngIf="readAgain"
+              class="overflow-auto h-96 w-full border-2 border-black shadow m-auto py-8 bg-white"
+            >
+              <pre
+                class="font-light text-xl whitespace-pre-wrap text-justify px-8 font-sans"
+                [innerHTML]="text"
+              ></pre>
+            </div>
+          </div>
+          <div class="no-flex justify-center">
+            <m-button (click)="startQuestions()">
+              Continuar con el cuestionario ->
+            </m-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>

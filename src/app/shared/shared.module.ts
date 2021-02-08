@@ -12,15 +12,20 @@ import { MNavbarLvlComponent } from './m-navbar-lvl/m-navbar-lvl.component';
 import { MFSelectComponent } from './form/m-f-select/m-f-select.component';
 import { MFTextareaComponent } from './form/m-f-textarea/m-f-textarea.component';
 import { NotFoundErrorComponent } from './not-found-error/not-found-error.component';
+import { StartLvlComponent } from './start-lvl/start-lvl.component';
+import { ModalChartComponent } from './modal-chart/modal-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MHiddenComponent } from './m-hidden/m-hidden.component';
 
 
 
 @NgModule({
-  declarations: [MLevelComponent, MButtonComponent,MFInputComponent, MFRadioComponent, MFSearchComponent, MHComponent, QuestionsLvlComponent, MNavbarLvlComponent, MFSelectComponent, MFTextareaComponent, NotFoundErrorComponent],
+  declarations: [MLevelComponent, MButtonComponent,MFInputComponent, MFRadioComponent, MFSearchComponent, MHComponent, QuestionsLvlComponent, MNavbarLvlComponent, MFSelectComponent, MFTextareaComponent, NotFoundErrorComponent, StartLvlComponent, ModalChartComponent, MHiddenComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule
   ],
-  exports:[MLevelComponent, MButtonComponent,MFInputComponent,MFRadioComponent,MFSearchComponent,MHComponent,QuestionsLvlComponent,MNavbarLvlComponent,MFSelectComponent,MFTextareaComponent]
+  exports:[MLevelComponent, MButtonComponent,MFInputComponent,MFRadioComponent,MFSearchComponent,MHComponent,QuestionsLvlComponent,MNavbarLvlComponent,MFSelectComponent,MFTextareaComponent,StartLvlComponent, ModalChartComponent,MHiddenComponent]
 })
 export class SharedModule { }

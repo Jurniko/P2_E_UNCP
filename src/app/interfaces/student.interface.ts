@@ -1,3 +1,4 @@
+import { Attempts } from "./attempts.interface";
 import { School } from "./school.interface";
 
 export interface Student{
@@ -16,6 +17,7 @@ export interface Student{
 
   semester?:number //semestre
 
+  attempts:Attempts[]
   created_at?:Date
   updated_at?:Date
 
