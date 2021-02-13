@@ -19,6 +19,8 @@
     >
       <!-- textFinished -->
       <m-h type="p-1">TEXTO</m-h>
+      <p class="italic my-2 text-blue-500">  <span class="font-semibold"> Nota: </span>Pulsar en el icono de micrófono para comenzar con el reconocimiento de voz. <br> Una vez terminado nuevamente pulsar para acabar con la lectura y así seguir con el test. </p>
+
       <app-text
         (sucessfulRead)="succesfulRead($event)"
         (ppm)="ppmValue$ = $event"
