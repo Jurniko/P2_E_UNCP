@@ -1,5 +1,12 @@
-    <div class="font-light text-xl flex justify-center whitespace-pre-wrap h-auto" >
-      <youtube-player [videoId]="videoId" suggestedQuality="highres" [width]="screenWidth" [height]="screenHeight"[startSeconds]="0"
-        [endSeconds]="100" (stateChange)="stateOfVid($event)">
-      </youtube-player>
-    </div>
+<div class="font-light text-xl flex justify-center whitespace-pre-wrap h-auto">
+  <youtube-player
+    [videoId]="videoId"
+    suggestedQuality="highres"
+    [width]="screenWidth"
+    [height]="screenHeight"
+    [startSeconds]="0"
+    [endSeconds]="100"
+    (stateChange)="stateOfVid($event)"
+  >
+  </youtube-player>
+</div>

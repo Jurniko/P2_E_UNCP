@@ -28,7 +28,7 @@ export class DocenteService {
   }
 //TOKEN
   createRoom(room:Room){
-    return this.httpCliente.post<Room>(this.domain+this.path.teacher.room,room)
+    return this.httpCliente.put<Room>(this.domain+this.path.teacher.room,room)
   }
 //TOKEN
   getRoomById(id:number){

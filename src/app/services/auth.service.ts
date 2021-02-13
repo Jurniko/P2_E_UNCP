@@ -15,12 +15,12 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   postRegisterStudent$(data:Student){
-    return this.http.post(this.domain+this.path.student.register,data)
+    return this.http.put(this.domain+this.path.student.register,data)
   }
 
   //TOKEN
   studenLogin(studenLogin:{enrollment_code:string,nickname:string}){
-    return this.http.post(this.domain+this.path.student.login,studenLogin).pipe(map((res:any)=>res.data));
+    return this.http.put(this.domain+this.path.student.login,studenLogin).pipe(map((res:any)=>res.data));
   }
   //TOKEN
   studentInfo(){
@@ -35,7 +35,7 @@ export class AuthService {
 
   //Rememember_me : boolean    ->  true = 1 semana , false = no pasa nada
   loginTeacher(teacherData:{email:string,password:string}){
-    return this.http.post(this.domain+this.path.teacher.login,teacherData).pipe(map((e:any)=>e.data));
+    return this.http.put(this.domain+this.path.teacher.login,teacherData).pipe(map((e:any)=>e.data));
   }
   //TOKEN
   infoTeacher(){

@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { AuthService } from 'src/app/services/auth.service';
 
+@UntilDestroy()
 @Component({
   selector: 'm-navbar-lvl',
   templateUrl: './m-navbar-lvl.component.html'
@@ -17,7 +19,7 @@ export class MNavbarLvlComponent implements OnInit {
   }
 
   logoutStudent(){
-    this.authService.studentLogout().subscribe(res=>{
+    this.authService.studentLogout().pipe(untilDestroyed(this)).subscribe(res=>{
 
       localStorage.removeItem('token')
       this.route.navigate(['sala'])

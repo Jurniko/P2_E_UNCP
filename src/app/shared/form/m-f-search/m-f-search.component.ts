@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'm-f-search',
   templateUrl: './m-f-search.component.html'
@@ -12,7 +14,7 @@ export class MFSearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(characters=>{
+    this.form.valueChanges.pipe(untilDestroyed(this)).subscribe(characters=>{
       this.valueSearching.emit(characters)
     })
   }

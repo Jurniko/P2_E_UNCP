@@ -23,7 +23,6 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("DATA", this.data)
     this.blocks = this.data["level_"+this.level]!;
     this.blocks[0]
   }

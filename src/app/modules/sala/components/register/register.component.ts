@@ -2,10 +2,12 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { School } from 'src/app/interfaces/school.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { SalaService } from '../../services/sala.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html'
@@ -23,9 +25,9 @@ export class RegisterComponent implements OnInit {
   constructor( private rutaActiva:ActivatedRoute, private formBuilder : FormBuilder, private salaService:SalaService, private route:Router, private authService:AuthService, private location:Location) { }
 
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe(param=>{
+    this.rutaActiva.params.pipe(untilDestroyed(this)).subscribe(param=>{
       this.codigoSala = param.codigo;
-      this.salaService.getInvitedStudents$(this.codigoSala).subscribe((res:any)=>{
+      this.salaService.getInvitedStudents$(this.codigoSala).pipe(untilDestroyed(this)).subscribe((res:any)=>{
         this.invitedStudents = res;
       })
     })
@@ -43,7 +45,7 @@ export class RegisterComponent implements OnInit {
   }
 
   allSchools$(){
-    this.salaService.getAllSchools$().subscribe((res:School[])=>{
+    this.salaService.getAllSchools$().pipe(untilDestroyed(this)).subscribe((res:School[])=>{
       let newSchools : any[] =[] ; // forma [{}]
         res.map((e:any)=>{
           e["name"] = "school";
@@ -64,7 +66,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     if( isCorrect ){
-      this.authService.postRegisterStudent$(this.form.value).subscribe((res:any)=>{
+      this.authService.postRegisterStudent$(this.form.value).pipe(untilDestroyed(this)).subscribe((res:any)=>{
         localStorage.setItem("token",res.token)
 
         this.route.navigate([`/sala/${this.codigoSala}/lvl`])

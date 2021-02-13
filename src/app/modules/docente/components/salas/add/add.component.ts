@@ -2,9 +2,11 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Room } from 'src/app/interfaces/room.interface';
 import { DocenteService } from '../../../services/docente.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html'
@@ -37,7 +39,7 @@ export class AddComponent implements OnInit {
     roomF.description = this.form.get('description')?.value;
     roomF.enrollment_codes = (this.form.get('enrollment_codes')?.value).split(',');
 
-    this.docenteService.createRoom(roomF).subscribe((res:Room)=>{
+    this.docenteService.createRoom(roomF).pipe(untilDestroyed(this)).subscribe((res:Room)=>{
       this.roomCreated = res;
       this.openModal = true ;
     })

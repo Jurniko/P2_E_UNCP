@@ -16,16 +16,42 @@ import { StartLvlComponent } from './start-lvl/start-lvl.component';
 import { ModalChartComponent } from './modal-chart/modal-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MHiddenComponent } from './m-hidden/m-hidden.component';
-
-
+import { IndicationsComponent } from './indications/indications.component';
 
 @NgModule({
-  declarations: [MLevelComponent, MButtonComponent,MFInputComponent, MFRadioComponent, MFSearchComponent, MHComponent, QuestionsLvlComponent, MNavbarLvlComponent, MFSelectComponent, MFTextareaComponent, NotFoundErrorComponent, StartLvlComponent, ModalChartComponent, MHiddenComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxChartsModule
+  declarations: [
+    MLevelComponent,
+    MButtonComponent,
+    MFInputComponent,
+    MFRadioComponent,
+    MFSearchComponent,
+    MHComponent,
+    QuestionsLvlComponent,
+    MNavbarLvlComponent,
+    MFSelectComponent,
+    MFTextareaComponent,
+    NotFoundErrorComponent,
+    StartLvlComponent,
+    ModalChartComponent,
+    MHiddenComponent,
+    IndicationsComponent,
   ],
-  exports:[MLevelComponent, MButtonComponent,MFInputComponent,MFRadioComponent,MFSearchComponent,MHComponent,QuestionsLvlComponent,MNavbarLvlComponent,MFSelectComponent,MFTextareaComponent,StartLvlComponent, ModalChartComponent,MHiddenComponent]
+  imports: [CommonModule, ReactiveFormsModule, NgxChartsModule],
+  exports: [
+    MLevelComponent,
+    MButtonComponent,
+    MFInputComponent,
+    MFRadioComponent,
+    MFSearchComponent,
+    MHComponent,
+    QuestionsLvlComponent,
+    MNavbarLvlComponent,
+    MFSelectComponent,
+    MFTextareaComponent,
+    StartLvlComponent,
+    ModalChartComponent,
+    MHiddenComponent,
+    IndicationsComponent
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

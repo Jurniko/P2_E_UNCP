@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Problem } from 'src/app/interfaces/problem.interface';
@@ -8,6 +9,7 @@ import { randomProblemBg } from 'src/app/utils/radomProblemBg.utils';
 import { randomQuestionBg } from 'src/app/utils/randomQuestionBg.utils';
 import { SalaService } from '../../services/sala.service';
 
+@UntilDestroy()
 @Component({
   selector: 'bloque-vid',
   templateUrl: './bloque-vid.component.html'
@@ -42,7 +44,7 @@ export class BloqueVidComponent implements OnInit {
 
 
   init$(){
-    this.salaService.getProblem$(this.level,this.block).subscribe((res: Problem[])=>{
+    this.salaService.getProblem$(this.level,this.block).pipe(untilDestroyed(this)).subscribe((res: Problem[])=>{
       this.problem = res[0]
       if(res[0].questions.length == 3){
         this.form = this.formBuilder.group({

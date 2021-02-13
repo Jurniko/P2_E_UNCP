@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Student } from 'src/app/interfaces/student.interface';
 import { DocenteService } from '../../services/docente.service';
 import { downloadFile } from 'src/app/utils/downloadFile.utils';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+@UntilDestroy()
 @Component({
   selector: 'app-estudiantes-test',
   templateUrl: './estudiantes-test.component.html'
@@ -19,7 +21,7 @@ export class EstudiantesTestComponent implements OnInit {
   }
 
   init$(){
-    this.docenteService.getAllStudents().subscribe((res:Student[])=>{
+    this.docenteService.getAllStudents().pipe(untilDestroyed(this)).subscribe((res:Student[])=>{
       this.students = res;
     })
   }
@@ -29,9 +31,7 @@ export class EstudiantesTestComponent implements OnInit {
   }
 
   dStudentExcel(){
-    console.log("aqui tamos")
-    this.docenteService.downloadStudentsExcel().subscribe((res:any)=>{
-      console.log(res,"RESPUESTA!")
+    this.docenteService.downloadStudentsExcel().pipe(untilDestroyed(this)).subscribe((res:any)=>{
       downloadFile(res,'estudiantes_registrados')
   })
   }

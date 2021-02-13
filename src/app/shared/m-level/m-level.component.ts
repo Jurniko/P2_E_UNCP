@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class MLevelComponent implements OnInit {
   @Input() rol: string = "user" ;
-  @Input() lvl: number = 0;
+  @Input() lvl: number | string = 0 || '0';
   @Input() color: string = "normal"
   isAdmin : boolean= false ;
   isHidden : boolean = false ;

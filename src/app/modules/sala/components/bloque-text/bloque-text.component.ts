@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Problem } from 'src/app/interfaces/problem.interface';
 import { extractCorrectAternatives } from 'src/app/utils/extractCorrectAlternatives.utils';
@@ -8,6 +9,7 @@ import { randomQuestionBg } from 'src/app/utils/randomQuestionBg.utils';
 import { removeStorageResult } from 'src/app/utils/storageResult.utils';
 import { SalaService } from '../../services/sala.service';
 
+@UntilDestroy()
 @Component({
   selector: 'bloque-text',
   templateUrl: './bloque-text.component.html'
@@ -33,6 +35,8 @@ export class BloqueTextComponent implements OnInit,OnDestroy{
   randomBgQuestion : string = randomQuestionBg();
 
   randomBgProblem : string = randomProblemBg();
+
+  resetText:boolean = false;
   @Output() finishedTextData : EventEmitter<Logs> = new EventEmitter<Logs>();
 
   @Input() level : number = 1 ;
@@ -54,17 +58,17 @@ export class BloqueTextComponent implements OnInit,OnDestroy{
 
   }
   ngOnDestroy(){
-   console.log("TEMINAMOS EL BLOQUE 1")
     removeStorageResult();
   }
 
   init$(){
-    this.salaService.getProblem$(this.level,this.block).subscribe(res=>this.problem = res[0])
+    this.salaService.getProblem$(this.level,this.block).pipe(untilDestroyed(this)).subscribe(res=>this.problem = res[0])
   }
 
   usingAttempt(){
     this.textFinished = false;
     this.openResult = false;
+    this.resetText = true;
   }
 
   startRecordingTime(){
@@ -85,7 +89,6 @@ export class BloqueTextComponent implements OnInit,OnDestroy{
 
   extraPoints(points:number){
     this.form.addControl('ppm_points',new FormControl(points))
-    console.log(this.form.get('ppm_points')?.value)
   }
 
   onSubmit(){

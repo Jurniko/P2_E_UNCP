@@ -1,10 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Student } from 'src/app/interfaces/student.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { SalaService } from '../../services/sala.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-levels',
   templateUrl: './levels.component.html'
@@ -31,8 +33,7 @@ export class LevelsComponent implements OnInit {
   }
 
   init$(){
-    this.salaService.postLevelsStudents$().subscribe((res:any)=>{
-      console.log(res)
+    this.salaService.postLevelsStudents$().pipe(untilDestroyed(this)).subscribe((res:any)=>{
       if(!res){
         this.maxLevel = 0;
       }else{
@@ -41,7 +42,7 @@ export class LevelsComponent implements OnInit {
       }
     })
 
-    this.authService.studentInfo().subscribe(res=>{this.studentData = res,console.log(res)})
+    this.authService.studentInfo().pipe(untilDestroyed(this)).subscribe(res=>{this.studentData = res})
   }
 
   goLevel(level:number){

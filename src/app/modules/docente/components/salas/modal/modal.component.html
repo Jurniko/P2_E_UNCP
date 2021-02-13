@@ -3,8 +3,8 @@
       <div class="text-center mx-8 rounded shadow border-2 border-green-500 py-8 px-8 bg-white w-7/12 ">
         <h2 class="font-semibold text-2xl"> Url de Sala </h2>
           <div class="flex">
-            <input type="text" [value]="domain" class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 mr-4" #input >
-            <m-button (click)="copyCode(input)">Copiar</m-button>
+            <input type="text" [value]="domain" class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 mr-4" #input readonly >
+            <m-button (click)="copyCode(input)" type="normal">Copiar</m-button>
           </div>
       <div class="no-flex justify-center">
         <m-button type="back" (click)="navigate()"> Aceptar </m-button>

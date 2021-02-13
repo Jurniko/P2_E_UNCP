@@ -74,7 +74,7 @@ export class ResultadoComponent implements OnInit {
     return result;
   }
   usingAttempt(){
-
+    setStorageResult();
     this.attemptClick.emit(true);
   }
 

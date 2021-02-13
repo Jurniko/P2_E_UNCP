@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  domain:"http://127.0.0.1:8000/api/v1/",
+  domain:"https://uncp.cunasoft.com/laravel/api/v1/",
   path:{
 
       student:{
@@ -37,7 +37,7 @@ export const environment = {
         chartIndividual:"teacher/ichart/",
         chartGroup:"teacher/gchart/",
         chartGroupExcel:"teacher/gchartexcel/",
-        studentsExcel:"teacher/student/excel"
+        studentsExcel:"teacher/studentexcel"
 
       },
   }

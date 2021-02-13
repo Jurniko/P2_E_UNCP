@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { debounce, debounceTime } from 'rxjs/operators';
 import { VoiceRecognitionService } from '../../../services/voice-recognition.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-text',
   templateUrl: './text.component.html'
@@ -19,6 +21,11 @@ export class TextComponent implements OnInit,OnChanges{
   intervalFunction : any
   readingTimeInSeconds : number = 0;
 
+  ppmresult : number = 0;
+  observerText = {
+    permission: false,
+    message: ''
+  }
   @Output() sucessfulRead : EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() ppm :  EventEmitter<number> = new EventEmitter<number>();
 
@@ -41,7 +48,7 @@ export class TextComponent implements OnInit,OnChanges{
 
   startSpeech() {
     this.reset();
-    this.voiceService.start().pipe(debounceTime(650)).subscribe(res=>{
+    this.voiceService.start().pipe(debounceTime(650)).pipe(untilDestroyed(this)).subscribe(res=>{
 
       let a =  res.split(' ');
 
@@ -59,13 +66,14 @@ export class TextComponent implements OnInit,OnChanges{
     this.indiceGuia=0;
     this.textSacri = this.text.toLowerCase();
     this.textInner =  this.addTagHTML(this.text);
+    this.observerText.message = '';
   }
   stopSpeech(){
     this.voiceService.stop();
-
-    if( this.textSacri.length < 100){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
+    this.generatePPM();
+    if( this.textSacri.length < 100 && this.observerText.permission ){ // Si solo quedan 100 letras por leer, se pueda usar el botón siguiente.
       this.sucessfulRead.emit(true);
-      this.ppm.emit(this.PPM());
+      this.ppm.emit(this.ppmresult);
     }else{
       this.sucessfulRead.emit(false);
     }
@@ -98,9 +106,16 @@ export class TextComponent implements OnInit,OnChanges{
   }
 
 
-  PPM() : number{
-
-    return +((this.numberWords/this.readingTimeInSeconds )*60).toFixed(2);
+  generatePPM() : number | void{
+    let ppm = +((this.numberWords/this.readingTimeInSeconds )*60).toFixed(2);
+    if( ppm >= 450){
+      this.observerText.message  = " Algo salio mal, intente de nuevo.  ",
+      this.observerText.permission = false;
+     }
+    else{
+      this.observerText.permission = true;
+      this.ppmresult = ppm;
+     }
   }
 
   startStopwatch(){

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Room } from 'src/app/interfaces/room.interface';
 import { Student } from 'src/app/interfaces/student.interface';
 import { SalaService } from 'src/app/modules/sala/services/sala.service';
 import { downloadFile } from 'src/app/utils/downloadFile.utils';
 import { DocenteService } from '../../services/docente.service';
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-salas',
   templateUrl: './salas.component.html',
@@ -27,7 +28,7 @@ export class SalasComponent implements OnInit {
   }
 
   init$(){
-    this.docenteService.getAllRooms().subscribe((res:Room[])=>{
+    this.docenteService.getAllRooms().pipe(untilDestroyed(this)).subscribe((res:Room[])=>{
       this.rooms = res;
     })
   }
@@ -46,7 +47,7 @@ export class SalasComponent implements OnInit {
   }
 
   downloadExcel(code:string){
-    this.docenteService.downloadGroupExcelStudent(code).subscribe(res=>{
+    this.docenteService.downloadGroupExcelStudent(code).pipe(untilDestroyed(this)).subscribe(res=>{
       downloadFile(res,'sala_'+code)
     })
   }

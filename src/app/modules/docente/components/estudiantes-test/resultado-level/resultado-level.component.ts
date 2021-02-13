@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Report } from 'src/app/interfaces/reports.inteface';
 import { DocenteService } from '../../../services/docente.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-resultado-level',
   templateUrl: './resultado-level.component.html',
@@ -25,18 +27,16 @@ export class ResultadoLevelComponent implements OnInit {
   constructor(private route : Router, private docenteSevice:DocenteService, private rutaActiva:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe((param:Params)=>{
+    this.rutaActiva.params.pipe(untilDestroyed(this)).subscribe((param:Params)=>{
       this.studentId = param.id
       this.init$();
     })
   }
 
   init$(){
-    this.docenteSevice.getStudentsById(this.studentId).subscribe((res:any)=>{
+    this.docenteSevice.getStudentsById(this.studentId).pipe(untilDestroyed(this)).subscribe((res:any)=>{
       this.result = res
-      console.log(res)
       this.hiddenForAttempt = this.generateIdHiddenForAttempt(this.result.attempts.length);
-      console.log(this.hiddenForAttempt)
     })
   }
 
@@ -48,7 +48,7 @@ export class ResultadoLevelComponent implements OnInit {
     return levelVar;
   }
   details(stateKey:string){
-    this.docenteSevice.detailsBlockStudent(stateKey).subscribe((res:any)=>{
+    this.docenteSevice.detailsBlockStudent(stateKey).pipe(untilDestroyed(this)).subscribe((res:any)=>{
       this.detailsProblem = res;
       this.openModalDetails = true;
     })

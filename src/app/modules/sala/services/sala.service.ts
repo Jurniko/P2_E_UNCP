@@ -27,17 +27,17 @@ export class SalaService {
   }
   //TOKEN
   postProgress$(level_id:number){
-    return this.http.post<Logs>(this.domain+this.path.student.progress,{level_id:level_id});
+    return this.http.put<Logs>(this.domain+this.path.student.progress,{level_id:level_id});
   }
   //TOKEN
   postSaveLogForBlock(log:Logs){ // Almacena por cada bloque hecho
-    return this.http.post<Logs>(this.domain+this.path.student.logs,log)
+    return this.http.put<Logs>(this.domain+this.path.student.logs,log)
   }
 
 
   //TOKEN
   postResult(lvlnumber:number){
-    return this.http.post(this.domain+this.path.student.result,{level_id:lvlnumber})
+    return this.http.put(this.domain+this.path.student.result,{level_id:lvlnumber})
   }
 
 

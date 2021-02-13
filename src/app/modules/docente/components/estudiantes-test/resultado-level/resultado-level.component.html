@@ -29,7 +29,7 @@
     <div class="my-4" *ngFor="let attempt of result.attempts; let indx = index">
       <hr class="bg-green-400 h-1" />
       <div class="flex items-center">
-        <p class="text-xl widest text-blue-400o mr-2">INTENTO {{ indx }}</p>
+        <p class="text-xl widest text-blue-400 mr-2">INTENTO {{ indx + 1 }}</p>
         <m-button
           type="add"
           (click)="generateChart(attempt.student_id!, attempt.id!)"
@@ -38,14 +38,14 @@
         </m-button>
         <m-hidden (hidden)="hiddenForAttempt[indx] = $event"> </m-hidden>
       </div>
-      <m-level [lvl]="1" rol="admin"></m-level>
       <br />
       <div class="flex flex-wrap" [hidden]="hiddenForAttempt[indx]">
         <div
-          class="w-80 my-2"
+          class="w-80 my-1"
           [hidden]="hiddenForAttempt[indx]"
           *ngFor="let level of ['1', '2', '3']"
         >
+          <m-level [lvl]="level" rol="admin"></m-level> <br />
           <card
             [level]="level"
             [data]="attempt!"

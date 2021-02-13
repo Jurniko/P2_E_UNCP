@@ -24,6 +24,7 @@
         (ppm)="ppmValue$ = $event"
         [text]="problem?.body!"
         *ngIf="problem"
+        [requireReset]="resetText"
       ></app-text>
       <!-- *ngIf para que los valores ingresen una vez recogidas -->
       <m-button (click)="openResult = true" [disabled]="!succesfulRead$">

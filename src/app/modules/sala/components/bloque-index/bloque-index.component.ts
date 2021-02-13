@@ -1,11 +1,13 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Logs } from 'src/app/interfaces/logs.interface';
 import { Student } from 'src/app/interfaces/student.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { SalaService } from '../../services/sala.service';
 
+@UntilDestroy()
 @Component({
   selector: 'bloque-index',
   templateUrl: './bloque-index.component.html'
@@ -32,7 +34,7 @@ export class BloqueIndexComponent implements OnInit {
   }
 
   init$(){
-    this.salaService.postProgress$(this.level).subscribe((res:Logs)=>{//!! Como parametro va en estudiante
+    this.salaService.postProgress$(this.level).pipe(untilDestroyed(this)).subscribe((res:Logs)=>{//!! Como parametro va en estudiante
       this.log = res
 
       if(res.state_key != "" || res.state_key ){
@@ -56,27 +58,27 @@ export class BloqueIndexComponent implements OnInit {
       }
     })
 
-    this.authService.studentInfo().subscribe(res=>{
+    this.authService.studentInfo().pipe(untilDestroyed(this)).subscribe(res=>{
       this.studentData = res;
     })
   }
 
   getLvlOfRoute(){
 
-    this.rutaActiva.params.subscribe(param=>{
+    this.rutaActiva.params.pipe(untilDestroyed(this)).subscribe(param=>{
       this.level = +param.lvl;
     })
   }
 
   blockTextData(logs:Logs){
-    this.salaService.postSaveLogForBlock(logs).subscribe((res:Logs)=>{
-      console.log("blockTExt ",res)
+    this.salaService.postSaveLogForBlock(logs).pipe(untilDestroyed(this)).subscribe((res:Logs)=>{
         this.stateKeyGenerated = res.state_key;
     })
   }
 
   blockVidData(logs:Logs){
-    this.salaService.postSaveLogForBlock(logs).subscribe(res=>{
+    this.salaService.postSaveLogForBlock(logs).pipe(untilDestroyed(this)).subscribe(res=>{
+
   })
   }
 
