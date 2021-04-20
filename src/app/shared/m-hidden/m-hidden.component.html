@@ -1,0 +1,22 @@
+<div class="mx-8">
+  <button
+    class="flex py-1 px-2 items-center focus:outline-none"
+    (click)="hidden.emit(!isHidden); isHidden = !isHidden"
+  >
+    <img
+      *ngIf="!isHidden"
+      src="assets/shared/hidden-f.svg"
+      class="w-8"
+      alt="Ocultar"
+    />
+    <p *ngIf="!isHidden" class="ml-4">Ocultar</p>
+
+    <img
+      *ngIf="isHidden"
+      src="assets/shared/hidden-t.svg"
+      class="w-8"
+      alt="Ocultar"
+    />
+    <p *ngIf="isHidden" class="ml-4">Desocultar</p>
+  </button>
+</div>

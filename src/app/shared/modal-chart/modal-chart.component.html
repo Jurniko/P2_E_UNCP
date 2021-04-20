@@ -1,0 +1,43 @@
+<div
+  class="w-screen inset-0 h-screen bg-black bg-opacity-50 top-0 fixed m-auto z-50"
+>
+  <div class="flex justify-content items-center h-full">
+    <div
+      class="rounded bg-white shadow-2xl m-auto p-8 lg:w-9/12 md:w-10/12 w-11/12 overflow-y-auto h-full"
+    >
+    <div class="m-auto">
+      <m-button type="back" (click)="back.emit(true)"> Cerrar </m-button>
+    </div>
+      <div class="flex-col justify-center items-center w-full">
+        <div class="h-96">
+          <m-h type="p-1">PPM</m-h>
+
+          <ngx-charts-bar-vertical
+            [xAxisLabel]="'NIVELES'"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'PALABRAS x MINUTO'"
+            [xAxis]="true"
+            [yAxis]="true"
+            [results]="data.ppms"
+            [animations]="true"
+          ></ngx-charts-bar-vertical>
+        </div>
+        <div class="h-96 ">
+          <m-h type="p-1">PUNTAJES</m-h>
+
+          <ngx-charts-bar-vertical
+            [xAxisLabel]="'NIVELES'"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'PUNTAJES'"
+            [xAxis]="true"
+            [yAxis]="true"
+            [results]="data.scores"
+            [animations]="true"
+          ></ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

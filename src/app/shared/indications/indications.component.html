@@ -1,0 +1,137 @@
+<div>
+  <div class="fixed flex justify-end w-11/12 pt-8">
+    <button class="relative" (click)="showInfo = true">
+      <span
+        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"
+      ></span>
+      <span class="text-purple-600 font-semibold" >
+        Indicaciones
+      </span>
+    </button>
+  </div>
+
+  <div
+    class="flex fixed justify-center h-full overflow-auto z-50"
+    *ngIf="showInfo"
+  >
+    <div class="w-full bg-gray-800 bg-opacity-75 m-auto z-50">
+      <div class="text-center">
+        <m-button type="back" (click)="showInfo = false">Terminar</m-button>
+      </div>
+
+      <div class="lg:w-8/12 md:w-10/12  w-11/12 m-auto text-white bg-gray-900 md:py-4 py-2 lg:px-16 md:px-12 px-8">
+        <h1 class="font-bold md:text-3xl text-2xl tex-center text-center">
+          I N D I C A C I O N E S
+        </h1>
+        <section class="my-8" id="registrarse">
+          <h3 class="font-bold lg:text-3xl md:text-2xl text-xl">/ A LA HORA DE REGISTRARTE</h3>
+          <div class="md:text-lg text-base">
+            <p class="py-8">
+              Recordar siempre tu
+              <span class="font-semibold">PSEUDÓNIMO</span> y tu
+              <span class="font-semibold">CÓDIGO DE MATRICULA</span>, ya que
+              será necesario si quieres volver a iniciar sesión en el sistema y
+              seguir con el test.<br />
+            </p>
+            <span class="pl-12 font-semibold italic">
+              Algunas Recomendaciones :
+            </span>
+            <br />
+            <span class="pl-16 text-red-600">
+              #
+              <span class="text-white"
+                >El Pseudonimo debe contener una palabra, de esta manera te
+                recordarás más rapido.
+              </span>
+            </span>
+          </div>
+        </section>
+        <section class="my-8" id="iniciar-sesion">
+          <h3 class="font-bold lg:text-3xl md:text-2xl text-xl">
+            / ¿QUIERES VOLVER A INICIAR SESIÓN NUEVAMENTE?
+          </h3>
+          <figure class="my-8">
+            <img src="assets/shared/indications/2.jpg" alt="" />
+            <figcaption>
+              <a
+                [href]="locale + '/#/sala'"
+                class="text-blue-300 underline text-lg"
+              >
+                Click aquí
+              </a>
+            </figcaption>
+          </figure>
+        </section>
+        <section class="my-8" id="microfono">
+          <h3 class="font-bold lg:text-3xl md:text-2xl text-xl">
+            / PERMITIR MICRÓFONO ( UNA VEZ INICIADO SESIÓN)
+          </h3>
+          <div class="md:text-lg text-base">
+            <p class="py-8">
+              Tenemos que dar acceso a nuestro micrófono, de otra manera no se
+              podrá avanzar en el test.
+            </p>
+            <figure class="my-8">
+              <img src="assets/shared/indications/3.jpg" alt="" />
+              <figcaption class="text-blue-300 text-lg">
+                Permitir uso de Micrófono
+              </figcaption>
+            </figure>
+            <span class="pl-12 font-semibold italic">
+              Algunas Recomendaciones :
+            </span>
+            <br />
+            <span class="pl-16 text-red-600">
+              #
+              <span class="text-white"
+                >En la sección <span class="font-semibold">TEXTO </span>para
+                comenzar con el reconocimiento de voz, tienes que presionar el
+                siguiente icono.
+              </span>
+              <img src="assets/shared/indications/3_1.jpg" />
+            </span>
+            <span class="pl-16 text-red-600">
+              #
+              <span class="text-white">
+                Ser lo más claros a la hora de pronunciar las palabras.
+              </span>
+            </span>
+          </div>
+        </section>
+        <section class="my-8" id="niveles">
+          <h3 class="font-bold lg:text-3xl md:text-2xl text-xl">
+            / COMO FUNCIONA EL SISTEMA DE NIVELES ( UNA VEZ INICIADO SESIÓN)
+          </h3>
+          <div class="md:text-lg text-base">
+            <p class="py-8">
+              Se tiene 3 niveles, de los cuales uno trás otro se van
+              desbloqueando. <br />
+              Si hemos llegado al final (nivel 3), entonces todo el puntaje
+              acumulado en los tres niveles se mostrarán en la parte izquierda
+              superior. <br />
+            </p>
+            <figure class="my-8">
+              <img src="assets/shared/indications/4.jpg" alt="" />
+              <figcaption class="text-blue-300 text-lg">Niveles</figcaption>
+            </figure>
+            <span class="pl-12 font-semibold italic">
+              Algunas Recomendaciones :
+            </span>
+            <br />
+            <span class="pl-16 text-red-600">
+              #
+              <span class="text-white">
+                El Test no acaba con solo terminar el tercer nivel. Sino puedes
+                seguir intentando las veces que quieras y seguir acumulando
+                puntajes.
+              </span>
+            </span>
+          </div>
+        </section>
+      </div>
+      <div class="text-center">
+        <m-button type="back" (click)="showInfo = false">Terminar</m-button>
+      </div>
+    </div>
+  </div>
+</div>

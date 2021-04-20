@@ -1,0 +1,79 @@
+<div
+  class="w-screen inset-0 h-screen bg-black bg-opacity-50 top-0 fixed m-auto z-50"
+>
+  <div class="flex justify-content items-center h-full">
+    <div
+      class="rounded bg-white shadow-2xl m-auto p-8 lg:w-6/12 md:w-8/12 w-10/12 overflow-y-auto h-full"
+    >
+      <m-h type="p-1">Bloque 1</m-h>
+      <div class="lg:w-8/12 md:w-9/12 w-10/12 text-justify m-auto h-32 my-8">
+        <p class="h-32 overflow-y-auto" [innerHTML]="problem[0].problem"></p>
+      </div>
+
+      <p class="font-black text-center tracking-wider">CUESTIONARIO</p>
+      <div
+        class="lg:w-8/12 md:w-9/12 w-10/12 m-auto my-2"
+        *ngFor="let question of problem[0].questions"
+      >
+
+        <hr />
+        <div class="flex justify-between items-center">
+          <p class="font-medium text-left">{{ question.question }}</p>
+          <p class="text-green-500 font-bold" *ngIf="question.correct">
+            Correcto
+          </p>
+          <p class="text-red-500 font-bold" *ngIf="!question.correct">
+            Incorrecto
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:w-8/12 md:w-9/12 w-10/12 m-auto my-4">
+        <p class="font-black text-center tracking-wider">APRECIACIÓN</p>
+        <p class="whitespace-pre-line w-full break-all">
+          {{ problem[0].appreciation }}
+        </p>
+      </div>
+
+      <div *ngIf="problem[1]">
+        <m-h type="p-1">Bloque 2</m-h>
+        <div class="flex justify-center whitespace-pre-wrap my-8">
+          <youtube-player
+            [videoId]="problem[1].problem"
+            suggestedQuality="highres"
+            [width]="screenWidth"
+            [height]="screenHeight"
+            [startSeconds]="0"
+            [endSeconds]="100"
+          >
+          </youtube-player>
+        </div>
+          <p class="font-black text-center tracking-wider">CUESTIONARIO</p>
+        <div
+          class="lg:w-8/2 md:w-9/12 w-10/12 m-auto my-2"
+          *ngFor="let question of problem[1].questions"
+        >
+          <hr />
+          <div class="flex justify-between items-center">
+            <p class="font-medium text-left">{{ question.question }}</p>
+            <p class="text-green-500 font-bold" *ngIf="question.correct">
+              Correcto
+            </p>
+            <p class="text-red-500 font-bold" *ngIf="!question.correct">
+              Incorrecto
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-8/12 md:w-9/12 w-10/12 m-auto my-4">
+          <p class="font-black text-center tracking-wider">APRECIACIÓN</p>
+          <p class="whitespace-pre-line w-full break-all">
+            {{ problem[1].appreciation }}
+          </p>
+        </div>
+      </div>
+      <div class="m-auto text-center">
+        <m-button (click)="close.emit(true)" type="back">Salir </m-button>
+      </div>
+    </div>
+  </div>
+</div>
