@@ -11,6 +11,7 @@ export class MFTextareaComponent implements OnInit {
   @Input() formGroup : FormGroup = new FormGroup({});
   @Input() controlName : string = '';
   @Input() placeHolder : string = '';
+  @Input() letterCase : string = ''
   formControl : FormControl = new FormControl();
   constructor() { }
 

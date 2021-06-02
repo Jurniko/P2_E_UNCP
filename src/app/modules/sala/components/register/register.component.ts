@@ -59,14 +59,17 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     //this.route.navigateByUrl("/sala/"+this.codigoSala +"/lvl")
     let isCorrect = false;
+    let formValue = this.form.value;
+    formValue.enrollment_code = formValue.enrollment_code.toUpperCase();
     for(let invitationCode of this.invitedStudents){
-      if(invitationCode  == this.form.get('enrollment_code')?.value){
+      if(invitationCode  == formValue.enrollment_code){
         isCorrect = true;
         break;
       }
     }
+    formValue.nickname = formValue.nickname.toLowerCase()
     if( isCorrect ){
-      this.authService.postRegisterStudent$(this.form.value).pipe(untilDestroyed(this)).subscribe((res:any)=>{
+      this.authService.postRegisterStudent$(formValue).pipe(untilDestroyed(this)).subscribe((res:any)=>{
         localStorage.setItem("token",res.token)
 
         this.route.navigate([`/sala/${this.codigoSala}/lvl`])

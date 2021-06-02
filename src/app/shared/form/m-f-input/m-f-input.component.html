@@ -1,10 +1,19 @@
+<label class="tracking-wider font-semibold text-lg my-2">
+  {{ label }}:
+  <input
+    [type]="type"
+    [class]="
+      '
+      focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 ' + letterCase
+    "
+    [formControl]="this.formControl"
+    [maxLength]="maxLength != 0 ? maxLength : 240"
+    [placeholder]="placeHolder"
+  />
 
-<label class="tracking-wider font-semibold text-lg my-2"> {{label}}:
-  <input [type]="type" class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2" [formControl]="this.formControl" [maxLength]="maxLength!=0? maxLength : 240" [placeholder]="placeHolder">
-
-  <span *ngIf="hasError" class="text-red-500 font-normal ">
-    {{messageErrorInput()}}
+  <span *ngIf="hasError" class="text-red-500 font-normal">
+    {{ messageErrorInput() }}
   </span>
 
-  <br>
+  <br />
 </label>

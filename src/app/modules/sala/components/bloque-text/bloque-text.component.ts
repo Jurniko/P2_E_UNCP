@@ -37,6 +37,7 @@ export class BloqueTextComponent implements OnInit,OnDestroy{
   randomBgProblem : string = randomProblemBg();
 
   resetText:boolean = false;
+  openHelpMessage : boolean = false
   @Output() finishedTextData : EventEmitter<Logs> = new EventEmitter<Logs>();
 
   @Input() level : number = 1 ;
@@ -89,6 +90,10 @@ export class BloqueTextComponent implements OnInit,OnDestroy{
 
   extraPoints(points:number){
     this.form.addControl('ppm_points',new FormControl(points))
+  }
+
+  openNote(){
+    
   }
 
   onSubmit(){

@@ -36,8 +36,9 @@ export class AddComponent implements OnInit {
 
   onSubmit(){
     let roomF :Room = {} as Room;
-    roomF.description = this.form.get('description')?.value;
-    roomF.enrollment_codes = (this.form.get('enrollment_codes')?.value).split(',');
+    let formValue = this.form.value
+    roomF.description = formValue.description;
+    roomF.enrollment_codes = (formValue.enrollment_codes.toUpperCase()).split(',');
 
     this.docenteService.createRoom(roomF).pipe(untilDestroyed(this)).subscribe((res:Room)=>{
       this.roomCreated = res;

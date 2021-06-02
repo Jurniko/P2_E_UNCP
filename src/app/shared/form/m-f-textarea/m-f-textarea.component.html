@@ -1,6 +1,6 @@
 
 <label class="tracking-wider font-semibold text-lg my-2"> {{label}}:
-  <textarea type="text" cols="30" rows="5"  class="focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 mr-4" [formControl]="this.formControl" [placeholder]="placeHolder" >
+  <textarea type="text" cols="30" rows="5"  [class]="'focus:outline-none rounded shadow p-2 border-2 border-green-500 w-full focus:border-indigo-500 font-normal my-2 mr-4 ' +letterCase" [formControl]="this.formControl" [placeholder]="placeHolder" >
   </textarea>
   <br>
 </label>

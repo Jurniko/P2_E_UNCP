@@ -48,7 +48,7 @@ export class TextComponent implements OnInit,OnChanges{
 
   startSpeech() {
     this.reset();
-    this.voiceService.start().pipe(debounceTime(525)).pipe(untilDestroyed(this)).subscribe(res=>{
+    this.voiceService.start().pipe(debounceTime(465)).pipe(untilDestroyed(this)).subscribe(res=>{
 
       let a =  res.split(' ');
 

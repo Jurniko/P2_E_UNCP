@@ -54,9 +54,12 @@ export class EditComponent implements OnInit {
   }
   onSubmit(){
     let roomF :Room = {} as Room;
+    let formValue = this.form.value
+   
     roomF.id = this.idRoom;
-    roomF.description = this.form.get('description')?.value;
-    roomF.enrollment_codes = (this.form.get('enrollment_codes')?.value).split(',');
+    roomF.description = formValue.description;
+    roomF.enrollment_codes = (formValue.enrollment_codes.toUpperCase()).split(',');
+
     this.docenteService.editRoom(roomF).pipe(untilDestroyed(this)).subscribe((res:Room)=>{
       this.openModal = true ;
       this.route.navigate(["/docente/salas/"])

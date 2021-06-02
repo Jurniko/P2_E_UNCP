@@ -47,9 +47,10 @@ export class SalaComponent implements OnInit {
   }
 
   onSubmit(type:string) : void{
+    let formValue = this.form.value
     switch(type){
       case "room":
-        let code = this.form.get('code')?.value
+        let code = formValue.code
         this.salaService.getInvitedStudents$(code).pipe(untilDestroyed(this)).subscribe(res=>{
           this.route.navigate(["/sala/"+code])
         },(err)=>{
@@ -57,7 +58,8 @@ export class SalaComponent implements OnInit {
         })
         break;
       case "account":
-        this.authService.studenLogin(this.form.value).pipe(untilDestroyed(this)).subscribe((res:any)=>{
+        formValue.nickname = formValue.nickname.toLowerCase()
+        this.authService.studenLogin(formValue).pipe(untilDestroyed(this)).subscribe((res:any)=>{
           localStorage.setItem('token',res.token)
           this.route.navigate(["/sala/"+res.student.code.code+"/lvl"])
         }, err=>{

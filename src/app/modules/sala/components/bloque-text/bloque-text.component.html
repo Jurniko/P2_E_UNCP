@@ -15,11 +15,46 @@
     *ngIf="!textFinished"
   >
     <div
-      class="bg-white shadow-2xl h-full lg:w-9/12 md:w-10/12 w-11/12 m-auto lg:px-16 md:px-8 px-2"
+      class="
+        bg-white
+        shadow-2xl
+        h-full
+        lg:w-9/12
+        md:w-10/12
+        w-11/12
+        m-auto
+        lg:px-16
+        md:px-8
+        px-2
+      "
     >
       <!-- textFinished -->
       <m-h type="p-1">TEXTO</m-h>
-      <p class="italic my-2 text-blue-500">  <span class="font-semibold"> Nota: </span>Pulsar en el icono de micrófono para comenzar con el reconocimiento de voz. <br> Una vez terminado nuevamente pulsar para acabar con la lectura y así seguir con el test. </p>
+      <p class="italic my-2 text-gray-500 text-sm text-left">
+        <span
+          class="
+            font-semibold
+            rounded-full
+            text-blue-400
+            px-1
+            cursor-pointer
+            border-2 border-blue-400
+          "
+          (click)="openHelpMessage = !openHelpMessage"
+        >
+          Abrir nota
+        </span>
+        <span *ngIf="openHelpMessage">
+          <br />
+          * Pulsar en el icono de micrófono para comenzar con el reconocimiento
+          de voz. Una vez terminado, nuevamente pulsar para acabar con el
+          reconomiciento de voz y así seguir con el test. <br />
+          * En caso que haya salido algo mal, puedes reiniciarlo terminando el
+          reconocimiento de voz e iniciando nuevamente. <br />
+          * Trata de pronunciar correctamente las palabras, tambien hacer lo más
+          rapido posible y de manera fluida.
+        </span>
+      </p>
 
       <app-text
         (sucessfulRead)="succesfulRead($event)"
@@ -83,7 +118,18 @@
       style="background-image: url('assets/sala/appreciation/bg-1.svg')"
     >
       <div
-        class="bg-white lg:w-9/12 md:w-10/12 w-11/12 m-auto shadow-2xl lg:px-16 md:px-8 sm:px-4 px-2"
+        class="
+          bg-white
+          lg:w-9/12
+          md:w-10/12
+          w-11/12
+          m-auto
+          shadow-2xl
+          lg:px-16
+          md:px-8
+          sm:px-4
+          px-2
+        "
       >
         <m-h type="p-1">APRECIACIÓN</m-h>
         <form (ngSubmit)="onSubmit()" [formGroup]="form" class="py-16">

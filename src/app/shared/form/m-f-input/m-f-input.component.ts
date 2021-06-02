@@ -12,6 +12,7 @@ export class MFInputComponent implements OnInit {
   @Input() controlName : string = '';
   @Input() maxLength ?: number = 0;
   @Input() placeHolder : string = ''
+  @Input() letterCase : string = ''
   formControl : FormControl = new FormControl();
   constructor() { }
 
